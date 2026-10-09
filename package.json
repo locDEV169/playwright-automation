@@ -1,0 +1,27 @@
+{
+  "name": "playwright-automation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright BDD + DDT E2E suite driven by the Excel test case sheet",
+  "scripts": {
+    "bddgen": "bddgen",
+    "test": "pnpm bddgen && playwright test",
+    "test:ci": "pnpm bddgen && playwright test --grep-invert @skip-ci",
+    "test:ui": "pnpm bddgen && playwright test --ui",
+    "test:headed": "pnpm bddgen && playwright test --headed",
+    "test:report": "playwright show-report",
+    "test:scripts": "tsx --test scripts/lib/*.test.ts",
+    "auth:login": "tsx scripts/auth-login.ts",
+    "typecheck": "tsc --noEmit",
+    "check:sync": "tsx scripts/check-testcase-sync.ts",
+    "verify": "pnpm typecheck && pnpm bddgen && pnpm check:sync"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.3",
+    "dotenv": "^17.4.2",
+    "playwright-bdd": "^9.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3"
+  }
+}

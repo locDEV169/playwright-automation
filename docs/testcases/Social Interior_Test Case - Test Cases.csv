@@ -1,0 +1,1625 @@
+Total,Pass,Fail,Untested,Block,,,,,,,,,
+405,48,0,357,0,,,,,,,,,
+,,,,,,,,,,,,,
+No,Title,Pre-condition,Steps,Expected results,Results,Test Date,Executed by,Note,caseId,Automation,Domain,Flow,Tag
+Login,,,,,,,,,,,,,
+TC_1,Verify user login thành công,"Pre-condition:
+- User chưa bao giờ login vào IG","1. Mở URL IG
+2. Thực hiện login account gg
+(Ex: thao.tran.da@fumirai.ltd)","2. 
+- Login thành công
+- Move đến màn hình Mail mặc định",Untested,,Thảo Trần,,,Manual,authentication,,
+TC_2,,"Pre-condition:
+- User đã từng login vào IG",,,Untested,,Thảo Trần,,,Out,authentication,,
+Create Project & Group,,,,,,,,,,,,,
+TC_3,Verify tạo project và group thành công,"Pre-condition:
+- User chưa login IG","1. Enter URL 
++ Chứa Project id, Project name, group id và group name chưa tồn tại",1. Hiển thị màn hình Login,Untested,,Thảo Trần,,,,,,
+TC_4,,"Pre-condition:
+- User đã login thành công
+- URL example: https://dev-gate.interior.social/mail?projectId=projectA2&projectName=projectA2&groupId=groupA2.5&groupName=groupA2.5&to=thao.tran.da@fumirai.ltd&cc=tuan.le.cong@fumirai.ltd&template=ggMnGGQ-DI-QyGsMi3DIwwyHqGQiAwChDK+obbVBSyofHNDWDIFIMgigyDRDIEB6gLBqB2DIAhGg7qmDhzoPYMgskqAueoDAqOgK9aDmDICC+ARgCsAUiqB0jUAFSoCSGQFyegdQZAfgwLA+gyAgBkCeTnkBFDIA6GHYCpNQM56gaFtADOqB99UKlAAOmBAyKqBDo0DkmoBkGQKoZgdRDegIQZAUQyAgAxogHyeVIDccoDZSoC-EYCDKniAf9qAmgwkgKj6gLIMgBAqgCIMgEEM0oB9CoCIKngBSknqQA&oldHash=66d6e50d7ec82b82dca0cf3eb1c435318b8af0095050eb9784b1a83652b1bf4d&to ","1. Enter URL 
++ Chứa Project id, Project name, group id và group name chưa tồn tại
++ Không chứa template mail & fileURLs","1. Hiển thị popup プロジェクト作成 với thông tin chính xác
+- プロジェクト名 
++ Value = {Project Name}
++ status = view-only
+- グループ名
++ Value = {Group Name}
++ status = view-only
+- Button [キャンセル] = enabled
+- Button [確 認] = enabled",Untested,,Thảo Trần,,,,,,
+TC_5,,,"1. Enter URL 
++ Chứa Project id, Project name, group id và group name chưa tồn tại
++ Chứa template mail & fileURLs",,Untested,,Thảo Trần,,,,,,
+TC_6,,,2. Click button [確 認],"2. 
+- Close popup
+- Tạo Project
+- Tạo Group trong project đó
+- Tạo space chat với space name = project name
+- Mở popup Send mail
+- Popup Send mail hiển thị filled data khi có template",Untested,,Thảo Trần,,,,,,
+TC_7,,-,3. Check data,3. Hiển thị data chính xác,Untested,,Thảo Trần,,,,,,
+TC_8,,-,"1. Enter URL 
++ Chứa Project id, Project name đã tồn tại
++ Chứa group id và group name chưa tồn tại
++ Không chứa template mail & fileURLs
+2. Click button [確 認]","2. 
+- Close popup
+- Không tạo mới Project
+- Tạo Group mới trong project đã tồn tại đó
+- Không tạo mới space 
+- Mở popup Send mail
+- Popup Send mail không hiển thị filled data",Untested,,Thảo Trần,,,,,,
+TC_9,,-,"1. Enter URL 
++ Chứa Project id, Project name đã tồn tại
++ Chứa group id và group name chưa tồn tại
++ Chứa template mail & fileURLs
+2. Click button [確 認]",,Untested,,Thảo Trần,,,,,,
+TC_9,Verify không tạo project và group khi đã tồn tại,-,"1. Enter URL 
++ Chứa Project id, Project name, group id và group name đã tồn tại","1. 
+- Không tạo mới project và group
+- Không tạo mới space chat
+- Không mở popup Send mail
+- Move đến project và group đang tồn tại đó
+- Hiển thị màn hình list all mail của project đó",Untested,,Thảo Trần,,,,,,
+TC_10,Verify tạo project & group thất bại,-,"1. Enter URL 
++ Chứa Project id, Project name, group id và group name chưa tồn tại
+2. Click button [キャンセル]","2.
+- Close popup
+- Không tạo mới Project, Group và Space Chat
+- Không mở popup Send Mail",Untested,,Thảo Trần,,,,,,
+TC_11,,-,"1. Enter URL 
++ Chứa Project id, Project name đã tồn tại
++ Chứa group id và group name chưa tồn tại
+2. Click button [キャンセル]",,Untested,,Thảo Trần,,,,,,
+TC_12,,-,"1. Enter URL 
++ Chứa Project id, Project name, group id và group name đã tồn tại
+2. Click button [キャンセル]",,Untested,,Thảo Trần,,,,,,
+TC_13,Verify tạo mới project khi tạo URLs ở project chưa tồn tại,"Pre-condition:
+- フォームを開く thuộc project chưa tồn tại ở IG","Tại màn hình フォーム:
+1. Click button [フォームを開く]
+2. Chọn data bất kỳ
+3. Click button [URLを作成する]
+4. Click button [メール送信へ進む]","4. 
+- Tạo mới project và space chat
+- Chuyển đến màn hình Mail 
+- Mở popup Send mail với nội dung được filled bao gồm:
++ Mail manufacturer (to) 
++ Subject
++ Body mail
++ URL
++ Thông tin sản phẩm
++ Button [送信] = enabled
+- Popup được mở trong project mới được tạo",Untested,,Thảo Trần,,,,,,
+TC_14,Verify không tạo mới project khi tạo URLs ở project chưa tồn tại,"Pre-condition:
+- フォームを開く thuộc project đã tồn tại ở IG","Tại màn hình フォーム:
+1. Click button [フォームを開く]
+2. Chọn data bất kỳ
+3. Click button [URLを作成する]
+4. Click button [メール送信へ進む]","4. 
+- không tạo mới project và space chat
+- Chuyển đến màn hình Mail 
+- Mở popup Send mail với nội dung được filled bao gồm:
++ Mail manufacturer (to) 
++ Subject
++ Body mail
++ URL
++ Thông tin sản phẩm
++ Button [送信] = enabled
+- Popup được mở trong project > group đã tồn tại",Untested,,Thảo Trần,,,,,,
+Mail Module,,,,,,,,,,,,,
+TC_16,Verify Navigation,-,1. Click tab Chat,"1. 
+- Move đến màn hình Chat
+- Hiển thị đúng space chat = project name trước đó",Untested,,Thảo Trần,,,,,,
+TC_17,,-,1. Click tab Mail,"1. 
+- Move đến màn hình Mail
+- Hiển thị đúng project name = space chat trước đó",Untested,,Thảo Trần,,,,,,
+TC_18,,-,1. Click tab Manufacturer Form,1. Move đến màn hình Manufaturer Form,Untested,,Thảo Trần,,,,,,
+TC_19,Verify hiển thị button [Send mail],-,"1. Chọn project
+2. Chưa chọn group",2. Button [作成] = disabled,Untested,,Thảo Trần,,,,,,
+TC_20,,-,3. Chọn group trong project đó,3. Button [作成] = enabled,Untested,,Thảo Trần,,,,,,
+TC_21,Verify user send mail thành công,"Pre-condition:
+- Truyền URL chỉ chứa thông tin Project và Group","Tại popup 新規メッセージ:
+1. Check popup mail","1.
+- Hiển thị popup trống
+- Chưa có thông tin nào được fill",Untested,,Thảo Trần,,,,,,
+TC_22,,,"2. Nhập mail người nhận (to, cc và bcc)
+3. Nhập Subject
+4. Nhập body mail
+5. Click button [送信]","5. 
+- Close popup
+- Hiển thị thông báo send mail thành công
+- Hiển thị mail vừa gửi ở list all mail của group",Untested,,Thảo Trần,,,,,,
+TC_23,,,"2. Nhập mail người nhận (chỉ to)
+3. Nhập Subject
+4. Nhập body mail
+5. Click button [送信]",,Untested,,Thảo Trần,,,,,,
+TC_24,,"Pre-condition:
+- Truyền URL chứa thông tin Project, Group và template mail","Tại popup 新規メッセージ:
+1. Check popup mail",1. Hiển thị popup với thông tin được fill dựa theo template mail,Untested,,Thảo Trần,,,,,,
+TC_25,,,"2. Nhập những data chưa được fill
+3. Click button [送信]","3. 
+- Close popup
+- Hiển thị thông báo send mail thành công
+- Hiển thị mail vừa gửi ở list all mail của group",Untested,,Thảo Trần,,,,,,
+TC_26,,-,"Tại màn hình Project > Group:
+1. Click button [作成]",1. Mở popup Send Mail chưa có bất kỳ thông tin nào được fill,Untested,,Thảo Trần,,,,,,
+TC_27,,-,"2. Nhập toàn bộ thông tin 
+3. Click button [送信]","3. 
+- Hiển thị thông báo thành công
+- Hiển thị mail tại list all mail",Untested,,Thảo Trần,,,,,,
+TC_28,Verify user send mail thành công với attachment,-,"Tại popup 新規メッセージ:
+1. Nhập đầy đủ thông tin
+2. Click icon Attached file
+3. Chọn file (Ex: ppt, pdf, word, excel, ...)
+4. Click button [送信]","4. 
+- Close popup
+- Hiển thị thông báo send mail thành công với attached file
+- Hiển thị mail vừa gửi ở list all mail của group",Failed,Sep-11,Thảo Trần,Duplicate file,,,,,
+TC_29,,-,"5. Click mail vừa gửi
+6. Mở section attached file ",6. Hiển thị file đã đính kèm trong mail,Failed,Sep-11,Thảo Trần,Duplicate file,,,,,
+TC_30,,-,"Tại popup 新規メッセージ:
+1. Nhập đầy đủ thông tin
+2. Click icon Attached file
+3. Chọn image
+4. Click button [送信]
+5. Click mail vừa gửi
+6. Mở section attached file",,Untested,,Thảo Trần,,,,,,
+TC_31,,-,"Tại popup 新規メッセージ:
+1. Nhập đầy đủ thông tin
+2. Click icon Attached file
+3. Chọn file & image
+4. Click button [送信]
+5. Click mail vừa gửi
+6. Mở section attached file",6. Hiển thị image & file đã đính kèm trong mail,Untested,,Thảo Trần,,,,,,
+TC_32,,,"Tại popup 新規メッセージ:
+1. Nhập đầy đủ thông tin
+2. Click icon Attached file
+3. Chọn và upload nhiều file/image
+4. Click button [送信]
+5. Click mail vừa gửi
+6. Mở section attached file",,Untested,,Thảo Trần,,,,,,
+TC_33,,"Pre-condition:
+- Truyền URL chứa thông tin Project, Group và template mail và fileURLs","Tại popup 新規メッセージ:
+1. Nhập những thông tin còn thiếu
+2. Click button [送信]
+3. Click mail vừa gửi
+4. Mở section 添付ファイル",4. Hiển thị file đã đính kèm trong mail,Untested,,Thảo Trần,,,,,,
+TC_34,,-,"Tại màn hình Project > Group:
+1. Click button [作成]",1. Mở popup Send Mail chưa có bất kỳ thông tin nào được fill,Untested,,Thảo Trần,,,,,,
+TC_35,,-,"2. Nhập toàn bộ thông tin 
+3. Click icon Attacment
+4. Chọn và upload file
+5. Click button [送信]","3. 
+- Hiển thị thông báo thành công 
+- Hiển thị mail tại list all mail với attached file / image",Untested,,Thảo Trần,,,,,,
+TC_36,,-,"2. Nhập toàn bộ thông tin 
+3. Click icon Attacment
+4. Chọn và upload image
+5. Click button [送信]",,Untested,,Thảo Trần,,,,,,
+TC_37,,-,"2. Nhập toàn bộ thông tin 
+3. Click icon Attacment
+4. Chọn và upload file và image
+5. Click button [送信]",,Untested,,Thảo Trần,,,,,,
+TC_38,Verify sử dụng AI prompt để improve body mail,-,"Tại popup 新規メッセージ:
+1. Nhập toàn bộ thông tin
+2. Click icon [AI Prompt]",2. Mở section AI prompt,Untested,,Thảo Trần,,,,,,
+TC_39,,-,"3. Nhập prompt
+4. Click icon [Apply] ","4. 
+- Update body mail
+- Close section AI prompt",Untested,,Thảo Trần,,,,,,
+TC_40,,-,"5. Click button [送信]
+6. Click mail vừa gửi",6. Hiển thị body mail đã được AI prompt,Untested,,Thảo Trần,,,,,,
+TC_41,,-,"2. Enter prompt to improve mail
+3. Click icon [Apply] ",3. Improve the pre-filled email content based on the input provided in the AI prompt,Untested,,Thảo Trần,,,,,,
+TC_42,Verify khách hàng nhận được mail,"Pre-condition:
+- Nhân viên IG (user A) send mail cho khách hàng (User B)",1. User B mở email của mình,1. Hiển thị mail mới chưa đọc,Untested,,Thảo Trần,,,,,,
+TC_43,Verify khách hàng reply mail thành công,,"2. Click mail
+3. Thực hiện reply mail","3. Tại màn hình mà user A đã thực hiện send mail cho user B:
+- Hiển thị mail mới trong cùng thread mail
+- Hiển thị mail mới trong tab Unread mail
+- Cập nhật badge của tab Unread mail = {Current Number + 1}",Untested,,Thảo Trần,,,,,,
+TC_44,,,"1. User B mở email của mình 
+2. Click mail
+3. Thực hiện reply mail với attached file","3. Tại màn hình mà user A đã thực hiện send mail cho user B:
+- Hiển thị mail mới trong cùng thread mail kèm attached file
+- Hiển thị mail mới trong tab Unread mail
+- Cập nhật badge của tab Unread mail = {Current Number + 1}",Failed,Sep-11,Thảo Trần,Không nhận mail,,,,,
+TC_45,Verify hiển thị list all mail,-,1. User login IG,"1. 
+- Hiển thị màn hình Mail mặc định
+- Hiển thị ""プロジェクトを選択すると、関連するメールがここに表示されます""",Untested,,Thảo Trần,,,,,,
+TC_46,,"Pre-condition:
+- Chưa có mail nào được gửi",2. Chọn project bất kỳ,"2. Hiển thị ""あなたのメールリストは空です""",Untested,,Thảo Trần,,,,,,
+TC_47,,"Pre-condition:
+- Đã có mail được gửi",,2. Hiển thị list all mail của project đó,Untested,,Thảo Trần,,,,,,
+TC_48,,"Pre-condition:
+- Chưa có mail nào được gửi",3. Chọn group bất kỳ,"2. Hiển thị ""あなたのメールリストは空です""",Untested,,Thảo Trần,,,,,,
+TC_49,,"Pre-condition:
+- Đã có mail được gửi",,2. Hiển thị list all mail của project đó,Untested,,Thảo Trần,,,,,,
+TC_50,Verify send mail thất bại,-,"1. Click button [Send] mail
+2. Chỉ nhập mail",2. Disabled button [送信],Untested,,Thảo Trần,,,,,,
+TC_51,,,2. Chỉ nhập subject,2. Disabled button [送信],Untested,,Thảo Trần,,,,,,
+TC_52,,,,,Untested,,Thảo Trần,,,,,,
+TC_53,,,,,Untested,,Thảo Trần,,,,,,
+TC_54,Verify hiển thị mail ở tab All Mail,"Pre-condition:
+- Đã có mail được gửi",1. Click tab Project Name,1. Hiển thị toàn bộ mail trong project,Untested,,Thảo Trần,,,,,,
+TC_55,,"Pre-condition:
+- Chưa có mail được gửi",,"1. Hiển thị ""あなたのメールリストは空です""",Untested,,Thảo Trần,,,,,,
+TC_56,,"Pre-condition:
+- Đã có mail được gửi","2. Click Group dropdown list
+3. Chọn Group bất kỳ",3. Hiển thị toàn bộ mail trong group,Untested,,Thảo Trần,,,,,,
+TC_57,,"Pre-condition:
+- Chưa có mail được gửi",,"3. Hiển thị ""あなたのメールリストは空です""",Untested,,Thảo Trần,,,,,,
+TC_58,Verify hiển thị mail ở tab Unread,"Pre-condition:
+- Chưa có mail mới","Tại tab bất kỳ:
+1. Check tab Unread",1. Không hiển thị badge tại tab Unread ,Untested,,Thảo Trần,,,,,,
+TC_59,,,2. Click tab Unread,"2. Hiển thị ""あなたのメールリストは空です""",Untested,,Thảo Trần,,,,,,
+TC_60,,"Pre-condition:
+- Đã có mail mới","Tại tab bất kỳ:
+1. Check tab Unread","1. 
+- Hiển thị mail mới realtime
+- Hiển thị badge tại tab Unread: {Current Unread mail + 1}",Untested,,Thảo Trần,,,,,,
+TC_61,Verify chuyển mail mới vào tab Unread,,2. Click tab Unread,"2. 
+- Hiển thị mail mới được in đậm
+- Hiển thị dot xanh ở mỗi mail",Untested,,Thảo Trần,,,,,,
+TC_62,,,3. Click any Unread mail,"3. 
+- Remove mail khỏi tab Unread
+- Hiển thị badge tại tab Unread: {Current Unread mail - 1}",Untested,,Thảo Trần,,,,,,
+TC_63,Verify remove mail đã đọc khỏi tab Unread,,"4. Click tab All mail 
+5. Check mail vừa Read","5. 
+- Đánh dấu mail vừa Read không còn in đậm
+- Remove dot xanh ở mail
+- Bôi xám background",Untested,,Thảo Trần,,,,,,
+TC_64,Verify hiển thị mail ở tab Draft,"Pre-condition:
+- Chưa có mail ","Tại tab bất kỳ:
+1. Check tab 下書き",1. Không hiển thị badge tại tab Draft,Untested,,Thảo Trần,,,,,,
+TC_65,,,2. Click tab 下書き,"2. Hiển thị ""あなたのメールリストは空です""",Untested,,Thảo Trần,,,,,,
+TC_66,,"Pre-condition:
+- Đã có mail ","Tại tab bất kỳ:
+1. Check tab 下書き",3. Hiển thị badge tại tab Draft: {Current Draft mail - 1},Untested,,Thảo Trần,,,,,,
+TC_67,,,2. Click tab 下書き,"2. Hiển thị ở mỗi mail bao gồm:
+- Preview nội dung mail
+- Dot xanh
+- Tag đỏ [下書き]
+- Tag Group Name",Untested,,Thảo Trần,,,,,,
+TC_68,Verify gửi mail Draft thành công,"Pre-condition:
+- Mail Draft được tạo trước đó","Tại tab すべてのメール:
+1. Click mail có Draft mail
+2. Click button [送信]","2. 
+- Hiển thị thông báo thành công
+- Hiển thị mail vừa gửi trong thread mail
+- Remove tag đỏ [下書き] khỏi mail",Untested,,Thảo Trần,,,,,,
+TC_69,,,3. Click tab 下書き,3. Remove Draft mail vừa gửi thành công,Untested,,Thảo Trần,,,,,,
+TC_70,,,"Tại tab すべてのメール:
+1. Click mail có Draft mail
+2. Update data
+3. Click button [送信]","3. 
+- Hiển thị thông báo thành công
+- Hiển thị mail vừa gửi trong thread mail
+- Remove tag đỏ [下書き] khỏi mail",Untested,,Thảo Trần,,,,,,
+TC_71,,,"Tại tab 下書き:
+1. Click mail bất kỳ
+2. Click button [送信]","2. 
+- Hiển thị thông báo thành công
+- Remove mail khỏi tab 下書き
+- Hiển thị badge tại tab Draft: {Current Draft mail - 1}",Untested,,Thảo Trần,,,,,,
+TC_72,,,"Tại tab 下書き:
+1. Click mail bất kỳ
+2. Update data
+3. Click button [送信]","3. 
+- Hiển thị thông báo thành công
+- Remove mail khỏi tab 下書き
+- Hiển thị badge tại tab Draft: {Current Draft mail - 1}",Untested,,Thảo Trần,,,,,,
+TC_73,Verify hiển thị mail ở tab Star,"Pre-condition
+- Tồn tại nhiều mail","Tại tab すべてのメール:
+1. Click any mail",1. Hiển thị tại mail: icon Star chuyển từ trắng sang màu vàng,Untested,,Thảo Trần,,,,,,
+TC_74,,,2. Click tab スター付き,2. Hiển thị mail vừa Star trong tab này,Untested,,Thảo Trần,,,,,,
+TC_75,Verify remove mail đã Unstar khỏi tab ,,3. Click icon Star,3. Remove mail khỏi tab này,Untested,,Thảo Trần,,,,,,
+TC_76,,,4. Click tab すべてのメール,4. Hiển thị tại mail: icon Star chuyển từ vàng sang màu trắng,Untested,,Thảo Trần,,,,,,
+TC_77,Verify user reply mail thành công,,"1. Select mail
+2. Click icon [全員に返信]","2. 
+- Mở popup Send mail với 件名 và 宛先 đã có ở các mail trên trong thread
+- Hiển thị 宛先 với toàn bộ user được nhắc đến trong thread mail",Untested,,Thảo Trần,,,,,,
+TC_78,,,"3. Nhập body mail
+4. Click button [Send]","4. 
+- Hiển thị thông báo thành công
+- Hiển thị thông tin mail chính xác trong thread mail đã reply",Untested,,Thảo Trần,,,,,,
+TC_79,Verify user reply mail thành công với attached file,,"1. Select mail
+2. Click icon [全員に返信]
+3. Nhập body mail
+4. Click icon Attachment file
+5. Chọn và upload 1 file/image
+6. Click button [Send]","6. 
+- Hiển thị thông báo thành công
+- Hiển thị thông tin mail chính xác trong thread mail đã reply với attached file
+- Hiển thị attached file trong section Attached file AI-OCR",Untested,,Thảo Trần,,,,,,
+TC_80,,,"1. Select mail
+2. Click icon [全員に返信]
+3. Nhập body mail
+4. Click icon Attachment file
+5. Chọn và upload nhiều file/image
+6. Click button [Send]",,Untested,,Thảo Trần,,,,,,
+TC_81,,,,,Untested,,Thảo Trần,,,,,,
+TC_82,,,,,Untested,,Thảo Trần,,,,,,
+TC_83,Verify download attachment thành công,"Pre-condition
+- Tồn tại nhiều mail có attachment","Tại màn hình Group List Mail:
+1. Click mail
+2. Xem và Click icon Download tại attached file",2. Download thành công file,Untested,,Thảo Trần,,,,,,
+TC_84,,,"1. Click mail
+2. Xem và Click icon Download tại attached image",2. Download thành công image,Untested,,Thảo Trần,,,,,,
+TC_85,,,"1. Click mail
+2. Click icon Attachment
+3. Xem và Click icon Download tại attached file",3. Download thành công file,Untested,,Thảo Trần,,,,,,
+TC_86,,,"1. Click mail
+2. Click icon Attachment
+3. Xem và Click icon Download tại attached image",3. Download thành công image,Untested,,Thảo Trần,,,,,,
+Search Mail,,,,,,,,,,,,,
+TC_87,Search với keyword chính xác,,,,Untested,,Thảo Trần,,,,,,
+TC_88,Search bằng 1 phần keyword,,,,Untested,,Thảo Trần,,,,,,
+TC_89,Search nhiều keyword,,,,Untested,,Thảo Trần,,,,,,
+TC_90,Search keyword xuất hiện nhiều kết quả,,,,Untested,,Thảo Trần,,,,,,
+TC_91,Search keyword không tồn tại,,,,Untested,,Thảo Trần,,,,,,
+TC_92,Search keyword có space đầu/cuối,,,,Untested,,Thảo Trần,,,,,,
+TC_93,Search keyword có nhiều space giữa các từ,,,,Untested,,Thảo Trần,,,,,,
+TC_94,Search keyword over maxlength,,,,Untested,,Thảo Trần,,,,,,
+TC_95,Search keyword chỉ chứa khoảng trắng,,,,Untested,,Thảo Trần,,,,,,
+TC_96,Search Empty,,,Không cho phép search,Untested,,Thảo Trần,,,,,,
+TC_97,Search theo Subject đầy đủ,,,,Untested,,Thảo Trần,,,,,,
+TC_98,Search theo một phần Subject,,,,Untested,,Thảo Trần,,,,,,
+TC_99,Search theo Subject tiếng Nhật,,,,Untested,,Thảo Trần,,,,,,
+TC_100,Search theo Subject tiếng Anh,,,,Untested,,Thảo Trần,,,,,,
+TC_101,Search theo Subject chứa số,,,,Untested,,Thảo Trần,,,,,,
+TC_102,Verify hiển thị sidebar,"Pre-condition:
+- Login từ IF > IG",1. Login thành công,1. Không hiển thị sidebar,Untested,,Thảo Trần,,,,,,
+TC_103,,"Pre-condition:
+- Login từ url IG",,1. Hiển thị sidebar,Untested,,Thảo Trần,,,,,,
+TC_104,,"Pre-condition:
+- Login từ url IG
+- Sidebar đang mở",2. Click icon メニューを閉じる,2. Close sidebar,Untested,,Thảo Trần,,,,,,
+TC_105,,"Pre-condition:
+- Login từ url IG
+- Sidebar đang đóng",,2. Open sidebar,Untested,,Thảo Trần,,,,,,
+TC_106,,,,,Untested,,Thảo Trần,,,,,,
+TC_107,,,,,Untested,,Thảo Trần,,,,,,
+TC_108,,,,,Untested,,Thảo Trần,,,,,,
+TC_109,,,,,Untested,,Thảo Trần,,,,,,
+TC_110,,,,,Untested,,Thảo Trần,,,,,,
+TC_111,,,,,Untested,,Thảo Trần,,,,,,
+TC_112,,,,,Untested,,Thảo Trần,,,,,,
+TC_113,,,,,Untested,,Thảo Trần,,,,,,
+TC_114,,,,,Untested,,Thảo Trần,,,,,,
+TC_115,,,,,Untested,,Thảo Trần,,,,,,
+AI To do list,,,,,,,,,,,,,
+TC_116,Verify dùng AI to do list thành công,"Pre-condition:
+- Thread mail chứa nhiều mail
+- Tồn tại nhiều data
+- Đang không mở popup Reply mail","1. Chọn project
+2. Chọn group
+3. Click any mail
+4. Click icon AI
+5. Click tab [ToDoリストを作成]","5. 
+- Hiển thị section ToDoリスト trong thread mail
+- Hiển thị list task với checkbox status = unchecked",Untested,,Thảo Trần,,,,,,
+TC_117,,,6. Select checkbox,6. Button [タスクを作成する] vẫn hiển thị là disabled,Untested,,Thảo Trần,,,,,,
+TC_118,,,7. Chọn datepicker hiện tại,7. Button [タスクを作成する] = Enabled khi tất cả checkbox đã được nhập datepicker,Untested,,Thảo Trần,,,,,,
+TC_119,,,7. Chọn datepicker quá khứ,,Untested,,Thảo Trần,,,,,,
+TC_120,,,7. Chọn datepicker tương lai,,Untested,,Thảo Trần,,,,,,
+TC_121,,,8. Click button [タスクを作成する] ,"8. 
+- Add task vào Google task của mail đang login IG
+- Disabled button [タスクを作成する] 
+- Hiển thị gạch bỏ và disabled các task đã được add",Untested,,Thảo Trần,,,,,,
+TC_122,,,9. Click icon Google Task,"9. 
+- Chuyển đến màn hình Google Task trong tab mới
+- Hiển thị các task vừa add trong GG task với thông tin chính xác:
++ Tên project
++ Tên task
++ Datepicker",Untested,,Thảo Trần,,,,,,
+TC_123,,,"1. Chọn project
+2. Chọn group
+3. Click any mail
+4. Click icon AI
+5. Click tab [ToDoリストを作成]
+6. Select nhiều checkbox
+7. Chọn datepicker
+8. Click button [タスクを作成する] 
+9. Click icon Google Task","9. 
+- Chuyển đến màn hình Google Task trong tab mới
+- Hiển thị các task vừa add trong GG task với thông tin chính xác:
++ Tên project
++ Tên task
++ Datepicker",Untested,,Thảo Trần,,,,,,
+TC_124,,,"1. Repeat steps 1~5 ở above test case
+2. Click checkbox [すべて選択]
+3. Chọn datepicker cho từng checkbox
+4. Click button [タスクを作成する] 
+5. Click icon Google Task","2. All checkboxes status = checked
+5. 
+- Chuyển đến màn hình Google Task trong tab mới
+- Hiển thị toàn bộ task vừa add trong GG task với thông tin chính xác:
++ Tên project
++ Tên task
++ Datepicker",Untested,,Thảo Trần,,,,,,
+TC_125,,"Pre-condition:
+- Thread mail chứa nhiều mail
+- Tồn tại nhiều data
+- Đang mở popup Reply mail","1. Chọn project
+2. Chọn group
+3. Click any mail
+4. Click icon AI
+5. Click tab [ToDoリストを作成]","5. 
+- Hiển thị section ToDoリスト trong thread mail và nằm trên popup Reply",Untested,,Thảo Trần,,,,,,
+TC_126,,,"6. Click checkbox [すべて選択]
+7. Chọn datepicker cho từng checkbox
+8. Click button [タスクを作成する] 
+9. Click icon Google Task","9. 
+- Chuyển đến màn hình Google Task trong tab mới
+- Hiển thị toàn bộ task vừa add trong GG task với thông tin chính xác:
++ Tên project
++ Tên task
++ Datepicker",Untested,,Thảo Trần,,,,,,
+TC_127,,"Pre-condition:
+- Thread mail có mail nhưng không có mention task nào","1. Chọn project
+2. Chọn group
+3. Click any mail
+4. Click icon AI
+5. Click tab [ToDoリストを作成]","5. 
+- Hiển thị loading
+- Hiển thị ToDoがありません sau khi scan thread mail",Untested,,Thảo Trần,,,,,,
+TC_128,Verify task chỉ được tạo cho user đang login IG,"Pre-condition:
+- Thread mail có mail nhưng không có mention task nào","1. User A thực hiện AI to do list
+2. User A add task vào GG task
+3. User B mở GG task",3. Không hiển thị các task đã add vào GG task của user A,Untested,,Thảo Trần,,,,,,
+TC_129,Verify dùng AI to do list thành công trong thread dài hơn 100 message,"Pre-condition:
+- Thread mail có hơn 100 mails","1. Click thread mail
+2. Click icon AI
+3. Click tab [ToDoリストを作成]","3. 
+- Không bị lag
+- Hiển thị thông tin chính xác
+- Thời gian load dưới 5s",Untested,,Thảo Trần,,,,,,
+Manufacturer Form,,,,,,,,,,,,,
+TC_130,Verify send mail cho manufacturer form thành công,-,"Tại màn hình Form:
+1. Click button [フォームを開く]
+2. Chọn question có sẵn
+3. Click button [URLを作成する]",3. Mở popup 公開フォームURLの生成完了 với URL được tạo mới,Untested,,Thảo Trần,,,,,,
+TC_131,,-,4. Click button [メール送信へ進む],"4. 
+- Tạo mới project và space chat
+- Chuyển đến màn hình Mail 
+- Mở popup Send mail với nội dung được filled bao gồm:
++ Mail manufacturer (to) 
++ Subject
++ Body mail
++ URL
++ Thông tin sản phẩm
++ Button [Send] = enabled
+- Popup được mở trong project mới được tạo",Untested,,Thảo Trần,,,,,,
+TC_132,,-,5. Click button [Send],"5.
+- Hiển thị thông báo thành công
+- Hiển thị mail vừa gửi ở list mail",Untested,,Thảo Trần,,,,,,
+TC_133,,-,6. Mở mail của manufacturer,6. Hiển thị mail mới chưa đọc,Untested,,Thảo Trần,,,,,,
+TC_134,,-,"1. Click button [フォームを開く]
+2.  Chọn option [その他（自由入力）]
+3. Nhập question mới
+4. Click button [URLを作成する]
+5. Click button [メール送信へ進む]
+6. Click button [Send]
+7. Mở mail của manufacturer",7. Hiển thị mail mới chưa đọc,Untested,,Thảo Trần,,,,,,
+TC_135,,-,8. Click URL,8. Hiển thị Answer Form với câu hỏi tự nhập,Untested,,Thảo Trần,,,,,,
+TC_136,,-,"1. Click button [フォームを開く]
+2.  Chọn option [その他（自由入力）]
+3. Nhập question mới
+4. Chọn question có sẵn
+5. Click button [URLを作成する]
+6. Click button [メール送信へ進む]
+7. Click button [Send]
+8. Mở mail của manufacturer
+9. Click URL",9. Hiển thị Answer Form với câu hỏi sẵn và câu hỏi tự nhập,Untested,,Thảo Trần,,,,,,
+TC_137,,-,"1. Click button [フォームを開く]
+2.  Chọn option [その他（自由入力）]
+3. Nhập question mới
+4. Chọn question có sẵn
+5. Click button [URLを作成する]
+6. Click button [メール送信へ進む]
+7. Click button [Send]
+8. Đính kèm file
+9. Mở mail của manufacturer",9. Hiển thị mail mới với file đính kèm,Untested,,Thảo Trần,,,,,,
+TC_138,Verify send mail cho nhiều manufacturer thành công,-,"1. Click button [フォームを開く]
+2. Chọn question
+3. Click button [URLを作成する]
+4. Click button [メール送信へ進む]
+5. Nhập thêm mail [To]
+6. Click button [Send]
+7. Mở mail của manufacturer",7. Hiển thị mail mới với số người nhận chính xác,Untested,,Thảo Trần,,,,,,
+TC_139,,-,"1. Click button [フォームを開く]
+2. Chọn question
+3. Click button [URLを作成する]
+4. Click button [メール送信へ進む]
+5. Nhập thêm mail [To, cc & bcc]
+6. Click button [Send]
+7. Mở mail của manufacturer",,Untested,,Thảo Trần,,,,,,
+TC_140,Verify manufacturer form reply mail thành công,-,"1. Manufacturer mở mail 
+2. Click URL
+3. Nhập câu trả lời
+4. Click button [送 信]","4. 
+- Tại màn hinh Mail Manufacturer: Hiển thị form đã nhập data với status = disabled
+- Tại màn hình list mail của IG: Hiển thị mail hệ thống báo manufacturer đã submit form",Untested,,Thảo Trần,,,,,,
+TC_141,,-,"5. Manufacturer nhập body mail
+6. Click send mail","6. 
+- Tại màn hình list mail của IG: Hiển thị mail mới 
+- Tại màn hình Unread mail của IG: Update badge = {Current number + 1}",Untested,,Thảo Trần,,,,,,
+TC_142,,-,"1. Manufacturer mở mail 
+2. Click URL
+3. Nhập câu trả lời
+4. Chọn và Upload file
+5. Click button [送 信]
+6. Manufacturer nhập body mail
+7. Click send mail","6. 
+- Tại màn hình list mail của IG:
++ Hiển thị mail mới 
++ Hiển thị file đính kèm trong section Attached file
+- Tại màn hình Unread mail của IG: Update badge = {Current number + 1}",Untested,,Thảo Trần,,,,,,
+TC_143,Verify tạo URL send mail cho manufacturer thành công,-,"Tại màn hình Form:
+1. Click button [フォームを開く]
+2. Chọn question
+3. Click button [URLを作成する]","3.
+- Close popup
+- Move đến màn hình Mail
+- Mở popup Send mail với đầy đủ thông tin",Untested,,Thảo Trần,,,,,,
+TC_144,,-,"Tại màn hình Form:
+1. Click button [フォームを開く]
+2. Chọn question
+3. Click icon [X]",,Untested,,Thảo Trần,,,,,,
+TC_145,Verify không hiển thị Answer Form khi expired token,"Pre-condition:
+- user A send mail cho manufacturer thành công","1. Chờ expired token của URL 
+2. Tại mail của Manufacturer, click URL",2. Hiển thị thông báo đã hết hạn,Untested,,Thảo Trần,,,,,,
+TC_146,Verify tạo URL send mail cho manufacturer thất bại,-,"Tại màn hình Form:
+1. Click button [フォームを開く]
+2. Không chọn question",2. Button [URLを作成する] = disabled,Untested,,Thảo Trần,,,,,,
+TC_147,,-,3. Click button [リセット],"3. 
+- Tắt Question Form
+- Hiển thị ""左側からフォームを選択してください。""
+- Không move sang màn hình Mail ",Untested,,Thảo Trần,,,,,,
+TC_148,,-,"1. Click button [フォームを開く]
+2. Chọn question
+3. Click button [リセット]","3. 
+- Tắt Question Form
+- Hiển thị ""左側からフォームを選択してください。""
+- Không move sang màn hình Mail ",Untested,,Thảo Trần,,,,,,
+AI - OCR - Old,,,,,,,,,,,,,
+TC_152,Verify phân tích OCR thành công ,-,"1. Chọn project/group
+2. Click button [作成] 
+3. Nhập đầy đủ thông tin mail
+4. Click icon Attached file
+5. Chọn và upload file có chứa
++ File estimate
+6. Click button [送信]
+7. Click mail vừa gửi ở thread mail
+8. Click icon Attached file
+9. Chờ OCR phân tích file
+10. Quan sát section [OCR ジョブ履歴]","9.
+- Kích hoạt OCR
+- Scan list file ở section ファイル và メディア
+- Hiển thị loading 
+10.
+- Hiển thị file estimate với các status tương ứng:
++ Inprogress (待機中): khi đang phân tích
+  + Không hiển thị icon Eye và Download
++ Completed (完了): khi hoàn thành phân tích
+  + Hiển thị icon Eye và Download
++ Failed: khi có lỗi xảy ra trong khi phân tích
+  + Hiển thị icon Retry",Untested,,Thảo Trần,,,,,,
+TC_153,,-,"1. Chọn project/group
+2. Click button [作成l] 
+3. Nhập đầy đủ thông tin mail
+4. Click icon Attached file
+5. Chọn và upload file có chứa
++ Image estimate
+6. Click button [送信]
+7. Click mail vừa gửi ở thread mail
+8. Click icon Attached file
+9. Chờ OCR phân tích file
+10. Quan sát section [OCR ジョブ履歴]",,Untested,,Thảo Trần,,,,,,
+TC_154,,-,"1. Chọn project/group
+2. Click button [作成] 
+3. Nhập đầy đủ thông tin mail
+4. Click icon Attached file
+5. Chọn và upload file có chứa
++ File & Image estimate
+6. Click button [送信]
+7. Click mail vừa gửi ở thread mail
+8. Click icon Attached file
+9. Chờ OCR phân tích file
+10. Quan sát section [OCR ジョブ履歴]",,Untested,,Thảo Trần,,,,,,
+TC_155,,-,"1. Chọn project/group
+2. Click button [作成] 
+3. Nhập đầy đủ thông tin mail
+4. Click icon Attached file
+5. Chọn và upload file có chứa
++ File & Image estimate
++ File không estimate
+6. Click button [送信]
+7. Click mail vừa gửi ở thread mail
+8. Click icon Attached file
+9. Chờ OCR phân tích file
+10. Quan sát section [OCR ジョブ履歴]","9.
+- Kích hoạt OCR
+- Scan list file ở section ファイル và メディア
+- Hiển thị loading 
+10.
+- Hiển thị file estimate với các status tương ứng:
++ Inprogress (待機中): khi đang phân tích
+  + Không hiển thị icon Eye và Download
++ Completed (完了): khi hoàn thành phân tích
+  + Hiển thị icon Eye và Download
++ Failed: khi có lỗi xảy ra trong khi phân tích
+  + Hiển thị icon Retry
+- Chỉ hiển thị các file estimate đã được phân tích OCR",Untested,,Thảo Trần,,,,,,
+TC_156,,-,"1. Chọn project/group
+2. Click button [作成] 
+3. Nhập đầy đủ thông tin mail
+4. Click icon Attached file
+5. Chọn và upload file có chứa
++ File & Image estimate
++ Image không estimate
+6. Click button [送信]
+7. Click mail vừa gửi ở thread mail
+8. Click icon Attached file
+9. Chờ OCR phân tích file
+10. Quan sát section [OCR ジョブ履歴]",,Untested,,Thảo Trần,,,,,,
+TC_157,,-,"1. Chọn project/group
+2. Click button [作成] 
+3. Nhập đầy đủ thông tin mail
+4. Click icon Attached file
+5. Chọn và upload file có chứa
++ File & Image estimate
++ File & Image không estimate
+6. Click button [送信]
+7. Click mail vừa gửi ở thread mail
+8. Click icon Attached file
+9. Chờ OCR phân tích file
+10. Quan sát section [OCR ジョブ履歴]",,Untested,,Thảo Trần,,,,,,
+TC_158,Verify có thể preview file gốc và file CSV sau khi phân tích OCR,-,"Tại section [OCR ジョブ履歴]:
+11. Click icon Eye","11. Mở Modal xem trước thông tin file
+- File gốc
++ Hyperlink [別タブで開く]
+- File CSV
++ Icon Copy
++ Thông tin chi tiết của file CSV bao gồm:
+   + 仕入先 / メーカー / ブランド
+   + 商品名
+   + 数量
+   + カラー
+   + 仕様・品番
+   + サイズ mm
+   + 上代（単価）
+   + 下代（単価）
+   + 備考
+   + 注意事項（AIコメント）",Untested,,Thảo Trần,,,,,,
+TC_159,,"Pre-condition:
+- File PDF",12. Click hyperlink [別タブで開く],"12. 
+- Mở tab mới 
+- Hiển thị thông tin PDF",Untested,,Thảo Trần,,,,,,
+TC_160,,"Pre-condition:
+- Image",,"12. 
+- Mở tab mới 
+- Hiển thị thông tin Image",Untested,,Thảo Trần,,,,,,
+TC_161,Verify copy format của file CSV thành công,-,"13. Click icon [Copy]
+14. Chọn .doc としてコピー",14. Hiển thị thông báo thành công theo từng format,Untested,,Thảo Trần,,,,,,
+TC_162,,-,14. Chọn .md としてコピー,,Untested,,Thảo Trần,,,,,,
+TC_163,,-,14. Chọn .csv としてコピー,,Untested,,Thảo Trần,,,,,,
+TC_164,Verify download file CSV thành công,-,15. Click icon X,"15. 
+- Close Modal
+- Back về màn hình Mail
+- Vẫn mở section OCR ジョブ履歴",Untested,,Thảo Trần,,,,,,
+TC_165,,-,16. Click icon [Download],16. Download file CSV thành công,Untested,,Thảo Trần,,,,,,
+TC_166,,-,"17. Tại thư mục chứa file CSV vừa download, click file",17. Hiển thị thông tin file CSV giống với thông tin đã xem trước ở expected 11,Untested,,Thảo Trần,,,,,,
+TC_167,Verify thực hiện retry file phân tích OCR failed,"Pre-condition:
+- File phân tích OCR failed","Tại section AI OCR:
+1. Click button [Retry]","1. 
+- Thực hiện chạy lại OCR
+- Trả kết quả sau khi chạy xong",Untested,,Thảo Trần,,,,,,
+AI Summary - Mail,,,,,,,,,,,,,
+TC_165,Verify dùng AI Summary đoạn thread mail thành công,"Pre-condition:
+- Thread mail chứa nhiều mail
+- Tồn tại nhiều data
+- Đang không mở popup Reply mail","1. Chọn project
+2. Chọn group
+3. Click any mail
+4. Click icon AI
+5. Click tab [AIメール内容を要約]","5. 
+- Hiển thị section AIによる要約 trong thread mail
+- Hiển thị đoạn tóm tắt toàn bộ nội dung, thông tin có trong các mail",Untested,,Thảo Trần,,,,,,
+TC_166,,"Pre-condition:
+- Đoạn summary có nội dung dài",6. Scroll chuột,6. Scroll được và đọc được thông tin,Untested,,Thảo Trần,,,,,,
+TC_167,,"Pre-condition:
+- Đoạn summary có nội dung ngắn",,6. Không hiển thị scroll,Untested,,Thảo Trần,,,,,,
+TC_168,,-,7. Click icon [X],7. Close section AIによる要約,Untested,,Thảo Trần,,,,,,
+TC_169,,"Pre-condition:
+- Mail không chứa thông tin gì đặc biệt","1. Chọn project
+2. Chọn group
+3. Click any mail
+4. Click icon AI
+5. Click tab [AIメール内容を要約]","5. Hiển thị ""重要な更新はありません""",Untested,,Thảo Trần,,,,,,
+AI Summary - Chat,,,,,,,,,,,,,
+TC_170,Verify dùng AI Summary đoạn thread chat thành công,"Pre-condition:
+- Thread chat tồn tại nhiều message","1. Chọn space bất kỳ
+2. Chọn message có thread chat
+3. Click icon [AIメール内容を要約]","3. 
+- Hiển thị section AIによる要約 đang loading
+- Hiển thị đoạn tóm tắt toàn bộ nội dung, thông tin có trong các message",Untested,,Thảo Trần,,,,,,
+TC_171,,"Pre-condition:
+- Đoạn summary có nội dung dài",4. Scroll chuột,4. Scroll được và đọc được thông tin,Untested,,Thảo Trần,,,,,,
+TC_172,,"Pre-condition:
+- Đoạn summary có nội dung ngắn",,4. Không hiển thị scroll,Untested,,Thảo Trần,,,,,,
+TC_173,,-,5. Click icon [X],5. Close section AIによる要約,Untested,,Thảo Trần,,,,,,
+TC_174,,"Pre-condition:
+- Thread không chứa thông tin gì đặc biệt","1. Chọn space bất kỳ
+2. Chọn message có thread chat
+3. Click icon [AIメール内容を要約]",3. Hiển thị không có thông tin,Untested,,Thảo Trần,,,,,,
+AI Agent - Mail,,,,,,,,,,,,,
+TC_178,Verify sử dùng AI Agent thành công tìm thông tin trong project,-,"1. Chọn project
+2. Click icon Chatbot",2. Mở popup Chatbot,Untested,,Thảo Trần,,,,,,
+TC_179,,"Pre-condition:
+- Câu hỏi không liên quan đến nội dung trong project/group","3. Nhập câu hỏi bất kỳ
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của project và group
+- Trả về thông tin không tìm thấy",Untested,,Thảo Trần,,,,,,
+TC_180,,"Pre-condition:
+- Câu hỏi liên quan đến nội dung trong project/group",,"4. 
+- Tìm trong toàn bộ mail của project và group
+- Trả về thông tin được hỏi",Untested,,Thảo Trần,,,,,,
+TC_181,,-,"1. Chọn project
+2. Click icon Chatbot
+3. Click câu hỏi có sẵn",4. Trả về thông tin được hỏi nếu có đề cập,Untested,,Thảo Trần,,,,,,
+TC_182,Verify AI Agent (Chatbot) hoạt động theo project,"Pre-condition:
+- Project A liên quan đến theme màu sắc văn phòng","1. Chọn project A
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {chi phí bàn ghế}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project A
+- Trả về thông tin không tìm thấy",Untested,,Thảo Trần,,,,,,
+TC_183,,,"1. Chọn project A
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {màu sắc văn phòng}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project A
+- Trả về thông tin được hỏi",Untested,,Thảo Trần,,,,,,
+TC_184,,"Pre-condition:
+- Project B liên quan đến theme chi phí bàn ghế","1. Chọn project B
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {chi phí bàn ghế}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project B
+- Trả về thông tin được hỏi",Untested,,Thảo Trần,,,,,,
+TC_185,,,"1. Chọn project B
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {màu sắc văn phòng}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project B
+- Trả về thông tin không tìm thấy",Untested,,Thảo Trần,,,,,,
+AI Agent - Chat,,,,,,,,,,,,,
+TC_186,Verify sử dùng AI Agent thành công tìm thông tin trong space chat,-,"1. Chọn space chat
+2. Click icon Chatbot",2. Mở popup Chatbot,Untested,,Thảo Trần,,,,,,
+TC_187,,"Pre-condition:
+- Câu hỏi không liên quan đến nội dung trong space chat","3. Nhập câu hỏi bất kỳ
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của project và group
+- Trả về thông tin không tìm thấy",Untested,,Thảo Trần,,,,,,
+TC_188,,"Pre-condition:
+- Câu hỏi liên quan đến nội dung trong space chat",,"4. 
+- Tìm trong toàn bộ mail của project và group
+- Trả về thông tin được hỏi",Untested,,Thảo Trần,,,,,,
+TC_189,,-,"1. Chọn project
+2. Click icon Chatbot
+3. Click câu hỏi có sẵn",4. Trả về thông tin được hỏi nếu có đề cập,Untested,,Thảo Trần,,,,,,
+TC_190,Verify AI Agent (Chatbot) hoạt động theo project,"Pre-condition:
+- Project A liên quan đến theme màu sắc văn phòng","1. Chọn project A
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {chi phí bàn ghế}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project A
+- Trả về thông tin không tìm thấy",Untested,,Thảo Trần,,,,,,
+TC_191,,,"1. Chọn project A
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {màu sắc văn phòng}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project A
+- Trả về thông tin được hỏi",Untested,,Thảo Trần,,,,,,
+TC_192,,"Pre-condition:
+- Project B liên quan đến theme chi phí bàn ghế","1. Chọn project B
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {chi phí bàn ghế}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project B
+- Trả về thông tin được hỏi",Untested,,Thảo Trần,,,,,,
+TC_193,,,"1. Chọn project B
+2. Click icon Chatbot
+3. Nhập câu hỏi bất kỳ liên quan đến {màu sắc văn phòng}
+4. Click button [Send]","4. 
+- Tìm trong toàn bộ mail của các group trong project B
+- Trả về thông tin không tìm thấy",Untested,,Thảo Trần,,,,,,
+TC_194,Verify close popup AI chatbot khi chuyển đổi module,"Pre-condition:
+- Đang active tab Mail
+- Đang mở popup AI Chatbot",1. Click tab Chat,1. Tự close popup AI Chatbot,Untested,,Thảo Trần,,,,,,
+TC_195,,"Pre-condition:
+- Đang active tab Chat
+- Đang mở popup AI Chatbot",1. Click tab Mail,,Untested,,Thảo Trần,,,,,,
+Search Chat,,,,,,,,,,,,,
+TC_193,Verify Search message theo từ khóa chính xác,"Pre-condition:
+- Tồn tại nhiều message ở các space chat","Tại module Chat:
+1. Nhập keyword vào field Search
++ Text tồn tại trong space chat",1. Hiển thị modal gợi ý toàn bộ message có liên quan đến keyword ở toàn bộ space chat,Untested,,Thảo Trần,,,,,,
+TC_194,,"Pre-condition:
+- Tồn tại nhiều message ở các space chat
+- Message nằm ở space",2. Click message,2. Move đến message đó ở space chat chính xác,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Tồn tại nhiều message ở các space chat
+- Message nằm ở thread",,2. Move đến message đó ở space chat và mở thread chính xác ,Untested,,Thảo Trần,,,,,,
+TC_196,,"Pre-condition:
+- Tồn tại nhiều message ở các space chat","Tại module Chat:
+1. Nhập keyword vào field Search
++ Text tồn tại trong space chat
+2. Press Enter","2. Hiển thị màn hình với toàn bộ message có trong các space chat và liên quan đến keyword bao gồm:
+- Tên người gửi message
+- Toàn bộ message có chứa keyword
+- Thời gian gửi message",Untested,,Thảo Trần,,,,,,
+TC_197,,,,,Untested,,Thảo Trần,,,,,,
+TC_198,Verify search message từ quote message ,"Pre-condition:
+- Tồn tại nhiều message ở các space chat","Tại module Chat:
+1. Nhập keyword vào field Search
+2. Click message",2. Move đến message đó ở space/thread chat chính xác,Untested,,Thảo Trần,,,,,,
+,Verify search message từ quote message ,,,,Untested,,Thảo Trần,,,,,,
+TC_200,Verify search JP message chính xác,,,,Untested,,Thảo Trần,,,,,,
+TC_201,Search Number tồn tại trong message ,,,,Untested,,Thảo Trần,,,,,,
+TC_202,Search Date tồn tại trong message ,,,,Untested,,Thảo Trần,,,,,,
+TC_203,Verify search người gửi,,,,Untested,,Thảo Trần,,,,,,
+TC_204,Verify search người nhận,,,,Untested,,Thảo Trần,,,,,,
+TC_205,Verify search người được mention,,,,Untested,,Thảo Trần,,,,,,
+TC_206,Verify search keyword có ở nhiều space/thread chat,,,,Untested,,Thảo Trần,,,,,,
+TC_207,,,,,Untested,,Thảo Trần,,,,,,
+TC_208,Verify search không có data,"Pre-condition:
+- Tồn tại space chat có và không có message","Tại module Chat:
+1. Nhập keyword vào field Search
+2. Press Enter",1. Hiển thị Modal với チャットに一致する結果がありません,Untested,,Thảo Trần,,,,,,
+TC_209,,,"Tại module Chat:
+1. Nhập keyword vào field Search
+2. Press Enter",,Untested,,Thảo Trần,,,,,,
+TC_210,,,,,Untested,,Thảo Trần,,,,,,
+TC_211,,,,,Untested,,Thảo Trần,,,,,,
+TC_212,,,,,Untested,,Thảo Trần,,,,,,
+TC_213,,,,,Untested,,Thảo Trần,,,,,,
+TC_214,,,,,Untested,,Thảo Trần,,,,,,
+TC_215,Search Sender,,,,Untested,,Thảo Trần,,,,,,
+TC_216,Search Receiver,,,,Untested,,Thảo Trần,,,,,,
+TC_217,Search CC,,,,Untested,,Thảo Trần,,,,,,
+TC_218,Search BCC,,,,Untested,,Thảo Trần,,,,,,
+TC_219,Search User Name,,,,Untested,,Thảo Trần,,,,,,
+TC_220,Search Display Name,,,,Untested,,Thảo Trần,,,,,,
+TC_221,Search Mention User,,,,Untested,,Thảo Trần,,,,,,
+TC_222,Search filename,,,,Untested,,Thảo Trần,,,,,,
+TC_223,Search extension,,,,Untested,,Thảo Trần,,,,,,
+TC_224,Search partial filename,,,,Untested,,Thảo Trần,,,,,,
+TC_225,Search attachment title,,,,Untested,,Thảo Trần,,,,,,
+TC_226,Search domain,,,,Untested,,Thảo Trần,,,,,,
+TC_227,Search URL path,,,,Untested,,Thảo Trần,,,,,,
+TC_228,Search full URL,,,,Untested,,Thảo Trần,,,,,,
+TC_229,,,,,Untested,,Thảo Trần,,,,,,
+TC_230,,,,,Untested,,Thảo Trần,,,,,,
+TC_231,,,,,Untested,,Thảo Trần,,,,,,
+TC_232,,,,,Untested,,Thảo Trần,,,,,,
+TC_233,,,,,Untested,,Thảo Trần,,,,,,
+TC_234,,,,,Untested,,Thảo Trần,,,,,,
+TC_235,,,,,Untested,,Thảo Trần,,,,,,
+TC_236,,,,,Untested,,Thảo Trần,,,,,,
+TC_237,,,,,Untested,,Thảo Trần,,,,,,
+Send Notification to Slack - Mail,,,,,,,,,,,,,
+,Verify Slack notification is sent when email content contains important information,"Pre-condition:
+- Related to ""Change PIC""","1. Send email from Client to IG user with content:
++ Change PIC",1. Send notification to Slack with important content,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Change Email Address""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Di chuyển email được chia sẻ""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Phân chia thông tin liên hệ theo chức năng""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Thay đổi / xác nhận tỷ lệ chiết khấu (掛率)""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Thay đổi giá / giá bán lẻ (上代)""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Chuyển đổi pháp nhân / đổi tên công ty""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Nhà cung cấp ngừng hoạt động / chuyển đơn vị phân phối""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Đăng ký nhà cung cấp mới""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Thay đổi hình thức giao dịch""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Thay đổi điều kiện thanh toán""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Related to ""Thay đổi điều kiện giao hàng / thời gian giao hàng""",,,Untested,,Thảo Trần,,,,,,
+,,"Pre-condition:
+- Mixed ",,,Untested,,Thảo Trần,,,,,,
+,,-,2. Send email from IG user to Client,2. Send notification to Slack with important content,Untested,,Thảo Trần,,,,,,
+Chat Module,,,,,,,,,,,,,
+TC_255,Verify Navigation,"Pre-condition:
+- Project được tạo thành công","Tại tab bất kỳ:
+1. Click tab Chat","1.
+- Move đến màn hình Chat
+- Hiển thị mặc định là tab [ホーム]",Untested,,Thảo Trần,,,,,,
+TC_256,Verify hiển thị tab Home,-,2. Check UI,"2. 
+- Hiển thị toàn bộ space chat
+- Preview của mỗi space là last message ",Untested,,Thảo Trần,,,,,,
+TC_257,Verify hiển thị tab Mention,"Pre-condition:
+- Chưa có Mention message ",3. Click tab Mention,"3. Hiển thị ""メンションされたメッセージはありません""",Untested,,Thảo Trần,,,,,,
+TC_258,,"Pre-condition:
+- Đã có Mention message ","Tại space chat bất kỳ:
+1. User A gửi message
+2. User B thực hiện @user A","2. 
+- Tại tab Mention của user A: 
++ Mention message được hiển thị highlighted
++ Đánh dấu = Unread
+- Tại tab Mention của user B: 
++ Không hiển thị mention message",Untested,,Thảo Trần,,,,,,
+TC_259,,"Pre-condition:
+- Đã có Mention message in space",3. User A click Mention message,3. Move đến message tương ứng trong space chính xác,Untested,,Thảo Trần,,,,,,
+TC_260,,,4. Click tab Mention,4. Cập nhật mention message từ Unread thành Read,Untested,,Thảo Trần,,,,,,
+TC_261,,"Pre-condition:
+- Đã có Mention message in thread",5. User A click Mention message,5. Move đến message tương ứng trong thread chính xác,Untested,,Thảo Trần,,,,,,
+TC_262,,,6. Click tab Mention,6. Cập nhật mention message từ Unread thành Read,Untested,,Thảo Trần,,,,,,
+TC_263,Verify hiển thị tab Star,"Pre-condition:
+- Chưa có Star message ",1. Click tab Star,"1. Hiển thị ""メンションされたメッセージはありません""",Untested,,Thảo Trần,,,,,,
+TC_264,,"Pre-condition:
+- Đã có Star message ","Tại space chat bất kỳ:
+1. Hover vào message bất kỳ
+2. Click icon Star",2. Hiển thị icon Star chuyển từ màu trắng sang vàng,Untested,,Thảo Trần,,,,,,
+TC_265,,-,3. Click tab Star,3. Hiển thị message vừa được star,Untested,,Thảo Trần,,,,,,
+TC_266,,-,,,Untested,,Thảo Trần,,,,,,
+TC_267,Verify thay đổi Space Name thành công,-,"Tại sidebar > space chat tab:
+1. Click icon Menu",1. Hiển thị popup スペースのカスタマイズ,Untested,,Thảo Trần,,,,,,
+TC_268,,-,"2. Nhập new space name
+3. Click button [保 存]","3. 
+- Close popup
+- Cập nhật Space Name mới ở sidebar",Untested,,Thảo Trần,,,,,,
+TC_269,Verify không thay đổi Space Name,-,"Tại sidebar > space chat tab:
+1. Click icon Menu
+2. Nhập new space name
+3. Click button [キャンセル]","3. 
+- Close popup
+- Không cập nhật Space Name mới ở sidebar",Untested,,Thảo Trần,,,,,,
+TC_270,,,"Tại sidebar > space chat tab:
+1. Click icon Menu
+2. Nhập new space name
+3. Click icon [X]",,Untested,,Thảo Trần,,,,,,
+TC_271,Verify thay đổi Space Avatar thành công,-,"Tại sidebar > space chat tab:
+1. Click icon Menu
+2. Click icon Camera
+3. Upload image từ thư viện
+4. Click button [保 存]","4. 
+- Close popup
+- Cập nhật Space Avatar mới ở sidebar",Untested,,Thảo Trần,,,,,,
+TC_272,Verify không thay đổi Space Avatar ,-,"Tại sidebar > space chat tab:
+1. Click icon Menu
+2. Click icon Camera
+3. Upload image từ thư viện
+4. Click button [キャンセル]","4. 
+- Close popup
+- Không cập nhật Space Avatar mới ở sidebar",Untested,,Thảo Trần,,,,,,
+TC_273,,,"Tại sidebar > space chat tab:
+1. Click icon Menu
+2. Click icon Camera
+3. Upload image từ thư viện
+4. Click icon [X]",,Untested,,Thảo Trần,,,,,,
+TC_274,Verify clear Space Avatar thành công,-,"Tại sidebar > space chat tab:
+1. Click icon Menu
+2. Click icon Camera
+3. Upload image từ thư viện
+4. Click button [画像を削除]","4. 
+- Xóa Space Avatar đã upload
+- Hiển thị Space Avatar mặc định",Untested,,Thảo Trần,,,,,,
+TC_275,Verify user gửi message thành công,-,"Tại tab Space Chat:
+1. Nhập message
+2. Click icon [Send]","2. 
+Tại màn hình của user gửi: Gửi message thành công
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_276,,"Pre-condition:
+- Tồn tại nhiều message","3. Hover message bất kỳ
+4. Click icon Reply in thread
+5. Nhập message
+6. Click icon [Send]","6. 
+Tại màn hình của user gửi: 
+- Gửi message thành công
+- Hiển thị message được gửi trong thread, không hiển thị ngoài space
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_277,Verify user gửi message thành công với attached file/image,-,"Tại tab Space Chat:
+1. Nhập message
+2. Click icon [Attached file]
+3. Upload file/image
+4. Click icon [Send]","4. 
+Tại màn hình của user gửi: 
+- Gửi message thành công với attached file/image
+- Gửi attached file thành công 
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_278,,"Pre-condition:
+- Tồn tại nhiều message","Tại tab Space Chat A:
+1. Hover message bất kỳ
+2. Click icon Reply in thread
+3. Nhập message
+4. Click icon [Attached file]
+5. Upload file/image
+6. Click icon [Send]","6. 
+Tại màn hình của user gửi: 
+- Gửi message thành công với attached file/image
+- Hiển thị message và attached file/image được gửi trong thread, không hiển thị ngoài space
+- Lưu file trong 共有
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_279,,-,7. Click icon [共有],7. Hiển thị toàn bộ file/image có trong space chat,Untested,,Thảo Trần,,,,,,
+TC_280,,-,"8. Click space chat B
+9. Click icon [共有]",9. Không hiển thị các file/image của space chat A,Untested,,Thảo Trần,,,,,,
+TC_281,"Verify user gửi message thành công với icon
+",-,"Tại tab Space Chat:
+1. Nhập message
+2. Click icon [Icon]
+3. Chọn icon 
+4. Click icon [Send]","4. 
+Tại màn hình của user gửi: 
+- Gửi message thành công với icon
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_282,,"Pre-condition:
+- Tồn tại nhiều message","Tại tab Space Chat:
+1. Hover message bất kỳ
+2. Click icon [Reply in thread[
+3. Nhập message
+4. Click icon [Icon]
+5. Chọn icon 
+6. Click icon [Send]","6. 
+Tại màn hình của user gửi: 
+- Gửi message thành công với icon
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_283,Verify user quote message thành công,"Pre-condition:
+- Tồn tại nhiều message","Tại tab Space Chat:
+1. Hover message bất kỳ
+2. Click icon Quote
+3. Nhập message
+4. Click icon [Send]","4. 
+Tại màn hình của user gửi: 
++ Quote message thành công
++ Hiển thị message và attached file được gửi trong space
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_284,,,"Tại tab Space Chat:
+1. Hover message bất kỳ
+2. Click icon Reply in thread
+3. Hover message bất kỳ
+4. Click icon Quote
+5. Nhập message
+6. Click icon [Send]","6. 
+Tại màn hình của user gửi: 
++ Quote message thành công
++ Hiển thị message và attached file được gửi trong thread, không hiển thị ngoài space
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_285,Verify user quote message thành công với attached file,"Pre-condition:
+- Tồn tại nhiều message","Tại tab Space Chat:
+1. Hover message bất kỳ
+2. Click icon Quote
+3. Nhập message
+4. Click icon Attached file
+5. Chọn và upload file
+6. Nhập message 
+7. Click icon [Send]","7. 
+Tại màn hình của user gửi: 
++ Quote message thành công
++ Hiển thị message và attached file được gửi trong space
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_286,,,"Tại tab Space Chat:
+1. Hover message bất kỳ
+2. Click icon Reply in thread
+3. Hover message bất kỳ
+4. Click icon Quote
+5. Nhập message
+6. Click icon Attached file
+7. Chọn và upload file
+8. Click icon [Send]","8. 
+Tại màn hình của user gửi: 
++ Quote message thành công
++ Hiển thị message và attached file được gửi trong thread, không hiển thị ngoài space
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_287,"Verify user quote message thành công với icon
+",-,"Tại tab Space Chat:
+1. Hover message bất kỳ
+2. Click icon Quote
+3. Nhập message
+4. Click icon [Icon]
+5. Chọn icon 
+6. Click icon [Send]","4. 
+Tại màn hình của user gửi: Gửi message thành công với icon
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_288,,"Pre-condition:
+- Tồn tại nhiều message","Tại tab Space Chat:
+1. Hover message bất kỳ
+2. Click icon [Reply in thread]
+3. Hover message bất kỳ
+4. Click icon [Quote]
+5. Nhập message
+6. Click icon [Icon]
+7. Chọn icon 
+8. Click icon [Send]","8. 
+Tại màn hình của user gửi: Gửi message thành công với icon
+Tại màn hình của user nhận: Nhận message ngay lập tức",Untested,,Thảo Trần,,,,,,
+TC_289,Verify user star message thành công,"Pre-condition:
+- Tồn tại nhiều message","Tại màn hình Space Chat:
+1. Hover vào message bất kỳ
+2. Click icon [Star]","2.
+- Tại màn hình user thực hiện Star: 
++ Hiển thị icon Star chuyển màu trắng thành màu vàng
++ Hiển thị Star message vào tab Star 
+- Tại màn hình user không thực hiện Star: 
++ Hiển thị icon Star màu trắng
++ Không hiển thị Star message vào tab Star ",Untested,,Thảo Trần,,,,,,
+TC_290,Verify user unstar message thành công,,3. Re-click icon [Star],"2.
+- Tại màn hình user thực hiện Unstar: 
++ Hiển thị icon Star chuyển màu vàng thành màu trắng
++ Remove Star message khỏi tab Star 
+- Tại màn hình user không thực hiện Star: Không có gì thay đổi",Untested,,Thảo Trần,,,,,,
+TC_291,Verify navigate Star message chính xác,"Pre-condition:
+- Tồn tại nhiều message
+- Star message ở space",4. Click Star message,4. Navigate đến space có chứa star message chính xác,Untested,,Thảo Trần,,,,,,
+TC_292,,"Pre-condition:
+- Tồn tại nhiều message
+- Star message ở thread",,4. Navigate đến thread có chứa star message chính xác,Untested,,Thảo Trần,,,,,,
+TC_293,Verify user mention user khác thành công,"Pre-condition:
+- User chưa tồn tại trong hệ thống","Tại màn hình Chat space:
+1. Nhập @ ",1. Hiển thị popup đề xuất username tồn tại trong hệ thống,Untested,,Thảo Trần,,,,,,
+TC_294,,"Pre-condition:
+- User đã tồn tại trong hệ thống",,1. Không hiển thị popup đề xuất username tồn tại trong hệ thống,Untested,,Thảo Trần,,,,,,
+TC_295,,-,"2. Chọn username
+3. Nhập message
+4. Click icon [Send]","4. 
+Tại màn hình của user tag: Hiển thị background cho username được tag
+Tại màn hình của user được tag: 
++ Hiển thị thông báo đến
++ Hiển thị Mention Message trong tab Mention với status = Unread",Untested,,Thảo Trần,,,,,,
+TC_296,Verify user mention toàn bộ user thành công,"Pre-condition:
+- Toàn bộ user đã tồn tại trong hệ thống","Tại màn hình Chat space:
+1. Nhập @
+2. Chọn tag All
+3. Nhập message
+4. Click icon [Send]","4. 
+Tại màn hình của user tag: Hiển thị background cho tag All
+Tại màn hình của toàn bộ user được tag: 
++ Hiển thị thông báo đến
++ Hiển thị Mention Message trong tab Mention với status = Unread",Untested,,Thảo Trần,,,,,,
+TC_297,Verify user reaction message thành công,"Pre-condition:
+- Tồn tại nhiều message","Tại màn hình Chat spac e:
+1. User A thực hiện reaction message bất kỳ",1. Hiển thị icon React trên message,Untested,,Thảo Trần,,,,,,
+TC_298,,,2. User B thực hiện reaction message bất kỳ,2. Hiển thị icon React trên message,Untested,,Thảo Trần,,,,,,
+TC_299,,,3. User B click vào icon Reaction của user A,3. Hiển thị số lượng icon + 1,Untested,,Thảo Trần,,,,,,
+TC_300,,,4. User A click vào icon Reaction của user A,4. Hiển thị số lượng icon - 1,Untested,,Thảo Trần,,,,,,
+TC_301,Verify user pin message thành công,,"Tại màn hình Space Chat A:
+1. User A thực hiện PIN message bất kỳ",1. Hiển thị icon PIN chuyển từ màu trắng sang màu xanh tại message,Untested,,Thảo Trần,,,,,,
+TC_302,,,2. User B thực hiện PIN message bất kỳ,2. Hiển thị icon PIN chuyển từ màu trắng sang màu xanh tại message,Untested,,Thảo Trần,,,,,,
+TC_303,,,3. Click icon [ピン留め],3. Hiển thị toàn bộ message được PIN trong space chat A,Untested,,Thảo Trần,,,,,,
+TC_304,,,"4. Click Space Chat B
+5. Click icon [ピン留め]",5. Không hiển thị PIN message của space chat khác,Untested,,Thảo Trần,,,,,,
+TC_305,,"Pre-condition:
+- Chưa có message nào được PIN",,"5. Hiển thị ""ピン留めされたメッセージはありません""
+",Untested,,Thảo Trần,,,,,,
+TC_306,,"Pre-condition:
+- Tồn tại nhiều message trong thread","Tại màn hình Space Chat A:
+1. Hover message bất kỳ
+2. Click icon Reply in thread 
+3. User A thực hiện PIN message bất kỳ
+4. User B thực hiện PIN message bất kỳ
+5. Click icon [ピン留め]","3 & 4. Hiển thị icon PIN chuyển từ màu trắng sang màu xanh tại message
+5. Hiển thị toàn bộ message được PIN trong space chat A",Untested,,Thảo Trần,,,,,,
+TC_307,"Verify user unpin message thành công
+",-,"Tại màn hình Space Chat A:
+1. User A thực hiện PIN message bất kỳ
+2. User B thực hiện PIN message ở step 1",2. Hiển thị icon PIN chuyển từ màu xanh sang màu trắng tại message,Untested,,Thảo Trần,,,,,,
+TC_308,,-,3. Click icon [ピン留め],3. Không hiển thị message vừa được unpin ,Untested,,Thảo Trần,,,,,,
+TC_309,Verify số lượng PIN message không vượt quá 50 messages,"Pre-condition:
+- Tồn tại nhiều message trong space
+- Đã có 49 message được PIN","Tại màn hình Space Chat:
+1. User thực hiện PIN message bất kỳ",1. Hiển thị icon PIN chuyển từ màu trắng sang màu xanh tại message,Untested,,Thảo Trần,,,,,,
+TC_310,,"Pre-condition:
+- Tồn tại nhiều message trong space
+- Đã có 50 message được PIN",,1. Báo lỗi,Untested,,Thảo Trần,,,,,,
+TC_311,Verify move đến message chính xác khi click message tại section PIN message,"Pre-condition:
+- Tồn tại nhiều message trong space và thread
+- Tồn tại nhiều message được PIN trong section PIN","Tại space chat:
+1. Click icon [ピン留め]
+2. Click message bất kỳ (message trong space)",2. Move đến message chính xác,Untested,,Thảo Trần,,,,,,
+TC_312,,,"1. Click icon [ピン留め]
+2. Click message bất kỳ (message trong thread)",2. Mở thread và move đến message chính xác,Untested,,Thảo Trần,,,,,,
+TC_313,Verify hiển thị sidebar,"Pre-condition:
+- Sidebar đang mở","Tại sidebar:
+1. Click icon [Sidebar Collapse]","1. 
+- Toggle thu nhỏ
+- Close sidebar
+- Vẫn hiển thị màn hình space chat",Untested,,Thảo Trần,,,,,,
+TC_314,,"Pre-condition:
+- Sidebar đang đóng",,"1. 
+- Toggle mở to 
+- Open sidebar
+- Vẫn hiển thị màn hình space chat",Untested,,Thảo Trần,,,,,,
+TC_315,Verify hiển thị bubble chat,-,"1. User A gửi message vào space A
+2. User B đang ở space B","2.
+- Ở màn hình space chat của user A: Không hiển thị bubble chat
+- Ở màn hình space chat của user B: Hiển thị bubble chat cho space A",Untested,,Thảo Trần,,,,,,
+TC_316,,"Pre-condition:
+- Nhiều message ở nhiều space chat chưa đọc",3. Check bubble,3. Hiển thị 3 bubble mới nhất và bubble + {Số lượng space chat chưa đọc message},Untested,,Thảo Trần,,,,,,
+TC_317,Verify đóng section Attached file,-,"Tại màn hình space chat bất kỳ:
+1. Click icon [共有]
+2. Click icon [X]","2. 
+- Close section Attached file
+- Vẫn hiển thị tại space chat",Untested,,Thảo Trần,,,,,,
+TC_318,Verify đóng section PIN message,-,"3. Click icon [ピン留め]
+4. Click icon [X]","4. 
+- Close section PIN message
+- Vẫn hiển thị tại space chat",Untested,,Thảo Trần,,,,,,
+TC_319,Verify đóng màn hình space chat,-,5. Click icon [X],"5. 
+- Close space chat
+- Chuyển đến màn hình Home
+- Hiển thị list space chat",Untested,,Thảo Trần,,,,,,
+TC_320,Verify chuyển space chat thành công,-,"Tại màn hình space chat A:
+1. User click space chat B",1. Move đến màn hình space chat B,Untested,,Thảo Trần,,,,,,
+TC_321,Verify paging,-,,,Untested,,Thảo Trần,,,,,,
+External User,,,,,,,,,,,,,
+TC_322,Verify Invite 1 external user vào Space thành công,"Pre-condition:
+- Internal User = thao.tran.da@fumirai.ltd
+- External User = 01testexample10@gmail.com
+- Internal User là người tạo space chat","1. Internal User login IG
+2. Tại module Chat, click Space Name dropdown list
+3. Click tab [Add member]
+4. Nhập email external hợp lệ
+5. Click button [Invite]","1. 
+- Invite thành công
+- External user nhận được lời mời tham gia Space",Passed,Aug-7,Thảo Trần,,,,,,
+TC_323,,,6. Mở External Mail vừa được thêm,6. Hiển thị Invite Mail,Failed,Aug-7,Thảo Trần,https://kayabacho.backlog.com/view/FUMIRAI-2887,,,,,
+TC_324,,,7. Accept invitation,7. Mở IG URL,Passed,Aug-7,Thảo Trần,,,,,,
+TC_325,,,8. External User login IG,"8. 
+- Login thành công
+- Chỉ có thể truy cập module Chat",Failed,Aug-6,Thảo Trần,https://kayabacho.backlog.com/view/FUMIRAI-2871,,,,,
+TC_326,,,9. External User tạo project/space,9. Không cho phép tạo,Failed,Aug-6,Thảo Trần,https://kayabacho.backlog.com/view/FUMIRAI-2870,,,,,
+TC_327,Verify Invite N external user cùng lúc vào Space,"Pre-condition:
+- Inviter mail = Internal (Owner)
+- Invite mail = External User",10. Repeat steps 1~9 theo test cases trên,10. Expected như test case trên,Untested,Aug-10,Thảo Trần,,,,,,
+TC_328,,"Pre-condition:
+- Inviter mail = Internal (Owner)
+- Invite mail = Internal",,,Untested,,Thảo Trần,,,,,,
+TC_329,,"Pre-condition:
+- Inviter mail = Internal (Owner)
+- Invite mail = Internal & External User ",,,Untested,,Thảo Trần,,,,,,
+TC_330,,"Pre-condition:
+- Inviter mail = Internal (Member)
+- Invite mail = Internal & External User ",,,Untested,,Thảo Trần,,,,,,
+TC_331,,"Pre-condition:
+- Inviter mail = External (Guest)
+- Invite mail = Internal & External User ",,,Untested,,Thảo Trần,,,,,,
+TC_332,Verify hiển thị role chính xác,"Pre-condition:
+- Internal User = thao.tran.da@fumirai.ltd
+- Internal User là người tạo space chat","1. Tại module Chat, click [Space Name] dropdown list
+2. Click tab [Add Member]
+3. Check cột role của account đang login",3. Hiển thị role = Owner,Failed,Aug-7,Thảo Trần,https://kayabacho.backlog.com/view/FUMIRAI-2884,,,,,
+TC_333,,,4. Check cột role của account khác,4. Hiển thị role = Member,Passed,Aug-7,Thảo Trần,,,,,,
+TC_334,,"Pre-condition:
+- Internal User = thao.tran.da@fumirai.ltd
+- Internal User là người tạo space chat
+- Internal User đã mời External User",5. Check cột role của External User,5. Hiển thị role = Guest,Passed,Aug-7,Thảo Trần,,,,,,
+TC_335,Invite external user vào Space thất bại,"Pre-condition:
+- Internal User = thao.tran.da@fumirai.ltd
+- External User = 01testexample10@gmail.com
+- Internal User là không phải người tạo space chat","1. Internal User login IG
+2. Tại module Chat, click Space Name dropdown list
+3. Click tab [Add member]
+4. Nhập email external hợp lệ
+5. Click button [Invite]",5. Báo lỗi,Untested,Aug-7,Thảo Trần,,,,,,
+TC_336,External user được thêm ở space A không xuất hiện ở space B,,"1. Add ở space A
+2. Search tìm ở space B",Không hiển thị External User vừa thêm,Passed,Aug-7,Thảo Trần,,,,,,
+TC_337,,,,,Untested,,Thảo Trần,,,,,,
+TC_338,,,"1. External User A đang login mail (01testexample10@gmail.com)
+2. External User B đang login browser (trandathao2904@gmail.com)
+3. Khi User A click open gg chat space
+=> Mở mail của user B",,Untested,,Thảo Trần,,,,,,
+TC_339,,"mời external chưa bao giờ login
+đã từng login",,,Untested,,Thảo Trần,,,,,,
+TC_340,Verify invite internal user đã tồn tại trong space,"Pre-condition:
+- Internal user A đã tồn tại trong space/hệ thống","1. Tại màn hình Add User, invite user A
+2. Click button [Add]",2. Hiển thị thông báo user đã là thành viên.,Untested,,Thảo Trần,,,,,,
+TC_341,Verify invite external user đã tồn tại trong space,"Pre-condition:
+- External user B đã join hệ thống","1. Tại màn hình Add User, invite user B
+2. Click button [Add]",,Untested,,Thảo Trần,,,,,,
+TC_342,Verify external user sử dụng module chat như internal user,"Pre-condition:
+- External user đã join hệ thống bằng lời mời","Tại màn hình chat:
+1. External thực hiện text in space","1. 
+- External user gửi được message
+- Message hiển thị realtime cho tất cả member",Passed,Aug-13,Thảo Trần,,,,,,
+TC_343,,,1. External thực hiện text in space with attached file,,Passed,Aug-13,Thảo Trần,,,,,,
+TC_344,,,1. Thực hiện text in thread,,Passed,Aug-13,Thảo Trần,,,,,,
+TC_345,,,1. Thực hiện text in thread wile attached file,,Passed,Aug-13,Thảo Trần,,,,,,
+TC_346,,,1. Thực hiện reaction,,Passed,Aug-13,Thảo Trần,,,,,,
+TC_347,,,1. Thực hiện reaction in thread,,Passed,Aug-13,Thảo Trần,,,,,,
+TC_348,,,1. Thực hiện quote message in space,,Passed,Aug-13,Thảo Trần,,,,,,
+,,,1. Thực hiện quote message in space with file,,,,,,,,,,
+TC_349,,,1. Thực hiện quote message in thread,,Passed,Aug-13,Thảo Trần,,,,,,
+,,,1. Thực hiện quote message in thread with file,,,,,,,,,,
+TC_350,,,2. Thực hiện PIN message,"2. 
+- PIN message thành công
+- Hiển thị icon PIN chuyển từ trắng sang xanh
+- Hiển thị PIN message trong section PIN ピン留め",Passed,Aug-13,Thảo Trần,,,,,,
+TC_351,,,3. External mention Internal ,"3. 
+- Mention thành công
+- Tại tab Mention / メンション của người được mention, hiển thị mention message",Passed,Aug-13,Thảo Trần,,,,,,
+TC_352,,,3. Internal mention External,,Passed,Aug-13,Thảo Trần,,,,,,
+TC_353,,,3. Thực hiện mention all,"3. 
+- Mention thành công
+- Tại tab Mention / メンション, hiển thị mention message",Passed,Aug-13,Thảo Trần,,,,,,
+TC_354,,,4. Thực hiện star message,"4. 
+- Star message thành công
+- Hiển thị icon PIN chuyển từ trắng sang vàng
+- Tại tab Star message / スター付き, hiển thị message vừa Star",Passed,Aug-13,Thảo Trần,,,,,,
+,,,5. Thực hiện download file,Download thành công nếu có quyền.,,,,,,,,,
+,,,6. Thực hiện preview image,Image preview đúng.,,,,,,,,,
+TC_355,External logout rồi login lại,External đã join,Login lại,Vẫn thấy Space nếu chưa bị remove.,Untested,,Thảo Trần,,,,,,
+TC_356,Realtime khi external online,Internal & External online,Internal gửi message,External nhận ngay không cần refresh.,Untested,,Thảo Trần,,,,,,
+TC_357,Realtime khi external offline,External offline,Internal gửi message,Sau khi online lại nhận đầy đủ message.,Untested,,Thảo Trần,,,,,,
+TC_358,Notification khi được thêm vào Space,Invite thành công,Kiểm tra Notification,Notification hiển thị đúng nội dung.,Untested,,Thảo Trần,,,,,,
+TC_359,Invite email sai format,Có quyền thêm member,Nhập email sai định dạng,Không cho phép gửi lời mời.,Untested,,Thảo Trần,,,,,,
+TC_360,Invite email không tồn tại,Có quyền thêm member,Nhập email không tồn tại,Hiển thị thông báo email không hợp lệ hoặc không tìm thấy user.,Untested,,Thảo Trần,,,,,,
+TC_361,Tìm kiếm external user trong member list,External đã join,Search theo tên/email,Hiển thị đúng kết quả.,Untested,,Thảo Trần,,,,,,
+TC_362,Invite cùng một external user từ 2 trình duyệt cùng lúc,,,,Untested,,Thảo Trần,,,,,,
+TC_363,Double click nút Invite,,,,Untested,,Thảo Trần,,,,,,
+TC_364,Refresh ngay khi đang gửi invitation,,,,Untested,,Thảo Trần,,,,,,
+TC_365,Invite email có khoảng trắng đầu/cuối,,,,Untested,,Thảo Trần,,,,,,
+TC_366,Invite email viết HOA/thường,,,,Untested,,Thảo Trần,,,,,,
+TC_367,Invite email có ký tự đặc biệt,,,,Untested,,Thảo Trần,,,,,,
+TC_368,Accept invitation đã hết hạn,Invitation đã expired,Click invitation link,"Hiển thị thông báo invitation expired, không thể join Space",Untested,,Thảo Trần,,,,,,
+TC_369,Invite cùng email nhiều lần,Invitation đang pending,Invite lại cùng email,Không tạo invitation mới hoặc hiển thị thông báo phù hợp,Untested,,Thảo Trần,,,,,,
+TC_370,External đổi tên Space,External chỉ là Member,Rename Space,Không có quyền thực hiện,Untested,,Thảo Trần,,,,,,
+TC_371,Upload file vượt giới hạn dung lượng,Đăng nhập,Upload file > limit,Upload thất bại và hiển thị thông báo,Untested,,Thảo Trần,,,,,,
+TC_372,Upload file có tên trùng,Đã có file cùng tên,Upload lại,Xử lý theo rule của hệ thống,Untested,,Thảo Trần,,,,,,
+TC_373,Upload nhiều file cùng lúc,Cho phép multi upload,Upload 20 file,Upload thành công tất cả hoặc xử lý theo giới hạn,Untested,,Thảo Trần,,,,,,
+TC_374,Hủy upload giữa chừng,Đang upload,Cancel upload,Upload dừng và không tạo file,Untested,,Thảo Trần,,,,,,
+TC_375,Download file sau khi bị Remove khỏi Space,External đã bị remove,Mở link file,Không được phép tải xuống,Untested,,Thảo Trần,,,,,,
+TC_376,Verify search external user thành công,"Pre-condition:
+- External đã join","Tại màn hình :
+1. Nhập mail external user",,Untested,,Thảo Trần,,,,,,
+TC_377,,"Pre-condition:
+- Tồn tại nhiều External đã join",,,Untested,,Thảo Trần,,,,,,
+TC_378,Search theo email external,,Search email,Hiển thị đúng kết quả,Untested,,Thảo Trần,,,,,,
+TC_379,Search theo Display Name,,Search tên,Hiển thị đúng user,Untested,,Thảo Trần,,,,,,
+TC_380,Search không phân biệt hoa thường,,Search bằng chữ hoa/thường,Kết quả giống nhau,Untested,,Thảo Trần,,,,,,
+TC_381,Search có khoảng trắng đầu/cuối,,Search với khoảng trắng,Hệ thống trim và trả kết quả đúng,Untested,,Thảo Trần,,,,,,
+TC_382,Email có khoảng trắng đầu/cuối,Có quyền invite,Invite email,Hệ thống tự trim hoặc báo lỗi theo rule,Untested,,Thảo Trần,,,,,,
+TC_383,Email viết hoa,Có quyền invite,Invite TEST@ABC.COM,Hệ thống xử lý đúng,Untested,,Thảo Trần,,,,,,
+TC_384,Invite email rất dài,Có quyền,Nhập email tối đa,Validate đúng,Untested,,Thảo Trần,,,,,,
+TC_385,Invite nhiều hơn giới hạn,Space gần full,Invite thêm,Hiển thị thông báo đạt giới hạn,Untested,,Thảo Trần,,,,,,
+AI - OCR - New,,,,,,,,,,,,,
+TC_383,Verify thực hiện auto scan mail có đính kèm file EST,"Pre-condition:
+- User trong IG gửi mail cho Client flow tạo Project
+- Mail có EST attachment","1. Mở thread mail
+2. Click icon Attached file
+3. Check kết quả","3. Tại section File:
+- Không thực hiện Auto Scan list EST file
+- Không hiển thị status: 未OCR
+- Tại EST file và NOT EST file: Hiển thị icon Retry (Scan lần 1 để check file)",Passed,Sep-21,Thảo Trần,,,,,,
+TC_384,,"Pre-condition:
+- User trong IG gửi mail cho Client flow tạo Project
+- Mail không có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_385,,"Pre-condition:
+- User trong IG gửi mail cho Client flow tạo Group
+- Mail có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_386,,"Pre-condition:
+- User trong IG gửi mail cho Client flow tạo Group
+- Mail không có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_387,,"Pre-condition:
+- User trong IG gửi mail mới cho Client
+- Mail có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_388,,"Pre-condition:
+- User trong IG gửi mail mới cho Client
+- Mail không có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_389,,"Pre-condition:
+- User trong IG gửi mail cho Manufacturer
+- Mail có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_390,,"Pre-condition:
+- User trong IG gửi mail cho Manufacturer
+- Mail không có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_391,,"Pre-condition:
+- User trong IG reply mail
+- Mail có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_392,,"Pre-condition:
+- User trong IG reply mail
+- Mail không có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_393,,"Pre-condition:
+- IG nhận mail từ Client (Gmail)
+- Mail có EST attachment",,"3. Tại section File:
+- Auto scan EST file 
+- Tại EST file: Hiển thị icon Rescan (Scan lần 2 để run OCR)
++ Hiển thị status: 未OCR
+- Tại NOT EST file: Hiển thị icon Retrry (Scan lần 1 để check file) 
++ Không hiển thị status: 未OCR",Passed,Sep-21,Thảo Trần,,,,,,
+TC_394,,"Pre-condition:
+- IG nhận mail từ Client (Gmail)
+- Mail không có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_395,,"Pre-condition:
+- IG nhận mail từ User IG (Gmail)
+- Mail có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_396,,"Pre-condition:
+- IG nhận mail từ User IG (Gmail)
+- Mail không có EST attachment",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_397,,"Pre-condition:
+- User upload file EST/NOT EST và submit form Manufacturer","1. User IG thực hiện gửi mail cho Manufacturer kèm Form
+2. Manufacturer submit Form kèm EST File/NOT EST File
+3. IG tự động nhận file
+4. Click icon Attached file
+5. Check kết quả","5. 
+- Hiển thị các file được Auto scan
+",Confirming,Oct-6,Thảo Trần,,,,,,
+TC_398,,,"1. User IG thực hiện gửi mail cho Manufacturer kèm Form
+2. Manufacturer submit Form kèm EST Image /NOT EST Image 
+3. IG tự động nhận file
+4. Click icon Attached file
+5. Check kết quả",,Confirming,Oct-6,Thảo Trần,,,,,,
+TC_399,,,"1. User IG thực hiện gửi mail cho Manufacturer kèm Form
+2. Manufacturer submit Form kèm EST Image/File và NOT EST Image/File 
+3. IG tự động nhận file
+4. Click icon Attached file
+5. Check kết quả",,Confirming,Oct-6,Thảo Trần,,,,,,
+TC_400,"Verify thực hiện auto scan mail có đính kèm image EST
+
+
+
+
+
+
+
+
+
+
+
+
+","Pre-condition:
+- IG nhận mail từ Gmail
+- Mail có EST attachment (Image)","1. Mở thread mail
+2. Click icon Attached file
+3. Tại section Image, hover image
+4. Click icon Menu","4. 
+- Tại EST image: Hiển thị button [View Details], [Rescan], [Download], [History] 
+- Tại NOT EST image: Hiển thị button [View], [Download]",Passed,Sep-21,Thảo Trần,,,,,,
+TC_401,,"Pre-condition:
+- Mail từ các flow còn lại
+- Mail có EST attachment (Image)",,,Passed,Sep-21,Thảo Trần,,,,,,
+TC_402,Verify thực hiện Scan lần 1 thành công,"Pre-condition:
+- File là EST file được nhận từ Gmail","1. Mở thread mail
+2. Click icon Attached file
+3. Tại section File, check icon","3. 
+- Hiển thị status 未OCR
+- Hiển thị icon Re-scan",Passed,Sep-21,Thảo Trần,,,,,,
+TC_403,,"Pre-condition:
+- File là NOT EST file được nhận từ Gmail",,"3. 
+- Hiển thị icon Scan lần 1
+- Hiển thị status 対象外 ",Passed,Sep-21,Thảo Trần,,,,,,
+TC_404,,"Pre-condition:
+- Image là EST Image được nhận từ Gmail","1. Mở thread mail
+2. Click icon Attached file
+3. Tại section Image, hover image
+4. Click icon Menu
+5. Click button [Retry]","3. 
+- Hiển thị status chưa run OCR
+- Hiển thị button Re-scan (Scan lần 2)",Passed,Sep-21,Thảo Trần,,,,,,
+TC_405,,"Pre-condition:
+- Image là NOT EST Image được nhận từ Gmail",,3. Hiển thị button Scan lần 1,Passed,Sep-21,Thảo Trần,,,,,,
+TC_406,Verify thực hiện Scan lần 2 thành công,"Pre-condition:
+- File là EST file","1. Mở thread mail
+2. Click icon Attached file
+3. Tại section File, click icon Re-scan","3.
+- Hiển thị status tương ứng sau khi chạy OCR
+- Hiển thị icon History",Passed,Sep-21,Thảo Trần,,,,,,
+TC_407,,"Pre-condition:
+- File là NOT EST file",,3. Không hiển thị icon,Passed,Sep-21,Thảo Trần,,,,,,
+TC_408,,"Pre-condition:
+- Image là EST Image ","1. Mở thread mail
+2. Click icon Attached file
+3. Tại section Image, hover image
+4. Click icon Menu
+5. Click button [Re-scan]","3.
+- Hiển thị status tương ứng sau khi chạy OCR
+- Hiển thị icon History",Passed,Sep-21,Thảo Trần,,,,,,
+TC_409,,"Pre-condition:
+- Image là NOT EST Image ",,3. Không hiển thị button,Passed,Sep-21,Thảo Trần,,,,,,
+TC_410,,"Pre-condition:
+- EST Image chạy OCR bị failed",6. Click button [Re-scan],"6.
+- Hiển thị status 失敗
+- Hiển thị icon History
+- Hiển thị icon Re-scan",Passed,Sep-21,Thảo Trần,,,,,,
+TC_411,,"Pre-condition:
+- File chạy OCR bị failed","1. Mở thread mail
+2. Click icon Attached file
+3. Tại section File, click icon Re-scan
+4. Click icon Retry","4.
+- Hiển thị status 失敗
+- Hiển thị icon History
+- Hiển thị icon Re-scan",Passed,Sep-21,Thảo Trần,,,,,,
+TC_412,Verify không thực hiện auto scan khi duplicate file với file đã scan lần 1,"Pre-condition:
+- EST file được gửi từ Gmail
+- EST file đã được scan lần 1
+- EST file name = File A","1. Thực hiện reply mail tại IG
++ Chứa file name = A, B, C
+2. Click icon Attached file","2. Tại section File:
+- File A,B,C vừa gửi không Auto scan",Passed,Sep-21,Thảo Trần,,,,,,
+TC_413,Verify Confirm thông tin sau khi OCR thành công,"Pre-condition:
+- EST file đã được run OCR","1. Tại file đã được scan OCR, click icon View Detail
+2. Click button [見積書確定]
+3. Click button [確定してロックする]","3. 
+- Disabled toàn bộ thông tin trong file
+- Disabled button [確定済み]
+- Hiển thị button [手動プッシュ (IF連携)]
+- Hiển thị tại file status =  確定済",Passed,,Thảo Trần,,,,,,
+TC_414,Verify Re-scan cho file đã chạy OCR thành công,"Pre-condition:
+- Đã thực hiện scan OCR cho file EST","1. Mở section Attached file
+2. Tại file đã được scan OCR, click icon Scan OCR (lần 2)","2. 
+- Thực hiện scan OCR lần nữa
+- Lưu history chạy OCR cho file tại ファイル処理履歴",Passed,,Thảo Trần,,,,,,
+TC_415,Verify Re-scan cho file đã chạy scan lần 1,"Pre-condition:
+- Đã thực hiện scan lần 1 cho file NOT EST","1. Mở section Attached file
+2. Tại file đã được scan lần 1, click icon lần nữa","2. 
+- Thực hiện scan 1 lại lần nữa
+- Không enabled icon History",Passed,,Thảo Trần,,,,,,
+TC_416,Verify Edit OCR result thành công,"Pre-condition:
+- OCR status = Completed
+- File chưa thực hiện Confirm","1. Click Edit
+2. Thay đổi vendor","2. 
+- Giá trị có thể chỉnh sửa 
+- Chưa lưu DB trước khi Confirm",Passed,,Thảo Trần,,,,,,
+TC_417,Verify Edit OCR result - item value thành công,,1. Edit 取引先名/電話番号/消費税額,1. Giá trị được thay đổi trên màn hình đúng field tương ứng,Passed,,Thảo Trần,,,,,,
+TC_418,Verify Edit OCR result - nhiều field thành công,,"1. Thay đổi nhiều field
+2. Review result",2. Tất cả thay đổi được giữ trong edited result,Passed,,Thảo Trần,,,,,,
+TC_419,Verify Confirm result sau khi edit,-,"3. Click button [見積書確定]
+4. Click button [確定してロックする]","4. 
+- Edited result được lưu
+- UI chuyển trạng thái locked/confirmed
+- Hiển thị button [手動プッシュ (IF連携)]
+- Hiển thị tại file status =  確定済",Passed,,Thảo Trần,,,,,,
+TC_420,Verify Confirm result khi không edit ,"Pre-condition:
+- OCR status = Completed
+- File chưa thực hiện Confirm
+- Chưa thực hiện Edit","1. Click button [見積書確定]
+2. Click button [確定してロックする]","2. 
+- Toàn bộ AI result vẫn được gửi và lưu
+- Không bị mất field
+- Hiển thị button [手動プッシュ (IF連携)]
+- Hiển thị tại file status =  確定済",Passed,,Thảo Trần,,,,,,
+TC_421,Verify không Edit được khi OCR chưa Completed,"Pre-condition:
+- OCR status =  Pending/Processing","1. Quan sát file
+2. Click file và cố thực hiện Edit",2. Không click được file,Passed,,Thảo Trần,,,,,,
+TC_422,Verify không Confirm được khi OCR chưa Completed,"Pre-condition:
+- OCR status = Pending/Processing/Failed","1. Quan sát file
+2. Click file và cố thực hiện Confirm",,Passed,,Thảo Trần,,,,,,
+TC_423,Verify edit được thông tin đã Confirm,"Pre-condition:
+- OCR status = Completed
+- File đã thực hiện Confirm",1. Quan sát màn hình,1. Không hiển thị button [見積書確定],Passed,,Thảo Trần,,,,,,
+TC_424,,,,,Passed,,Thảo Trần,,,,,,
+TC_425,,,,,Passed,,Thảo Trần,,,,,,
+TC_426,,,,,Passed,,Thảo Trần,,,,,,
+,,,,,Passed,,Thảo Trần,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+Scan lần 1,"File có được nhận diện là EST không?
+Not EST có được xác định đúng không?
+Có notification khi phát hiện EST không?
+Not EST có bị OCR không?
+Có thể Re-run Classify không?",,,,,,,,,,,,
+Scan lần 2,"OCR có extract đúng data không?
+Field nào bị thiếu?
+AI result có hiển thị đúng không?
+User có Edit được không?
+Confirm có lưu đúng không?
+Push sang IF có đúng data không?",,,,,,,,,,,,
+,,,,,,,,,,,,,
+Flow gửi mail,"IF > gửi mail trên IG 
+- sau khi tạo project có attachment
+- sau khi tạo group có attachment
+- send mail mới có attachment
+- gửi mail cho manufacturer có attachment
+- khách reply mail có attachment
+- user IG reply mail có attachment",,,,,,,,,,,,
