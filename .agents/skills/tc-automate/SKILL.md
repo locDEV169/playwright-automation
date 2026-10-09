@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 # tc-automate — docs + Excel columns → BDD+DDT
 
-Conventions: `.cursor/rules/e2e-conventions.mdc` (read it first). Reference domain: `features/authentication/`.
+Conventions: `AGENTS.md` (read it first). Code shape: the target `features/{domain}/` if it exists, else the worked example `features/sample/`. Copy file structure, not its flows, `expect` flags or assertions.
 
 If the docs pair is missing → stop and ask for `/tc-spec` first.
 
@@ -46,11 +46,11 @@ Do not edit `pages/`, `fixtures.ts`, `steps.ts`, `shared/` or `playwright.config
 
 Order:
 
-1. Dataset (contract in the rule; export `DATASET`, `get{Xxx}Case` throws with known ids).
+1. Dataset (contract in `AGENTS.md`; export `DATASET`, `get{Xxx}Case` throws with known ids).
 2. POM `pages/{Flow}Page.ts`: `runCase` switches on `flow`; `expectCase` asserts each set `expect` flag; locators by role/label/text first; waits on responses/elements, not timers.
 3. `fixtures.ts`: extend `test` from `shared/fixtures` with the POM fixture.
 4. `tests/steps.ts`: the two runner steps only.
-5. Feature: Outline(s) per the rule (`Given the user is signed in` for `@authenticated`).
+5. Feature: Outline(s) per `AGENTS.md` (`Given the user is signed in` for `@authenticated`).
 6. Docs: as in mode `rows`.
 
 Mark the summary "needs engineer review" — this mode's output is a draft.

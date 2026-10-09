@@ -2,6 +2,7 @@
  * Creates playwright/.auth/user.json for @authenticated scenarios.
  * With TEST_EMAIL/TEST_PASSWORD in .env the Google popup is filled automatically;
  * otherwise sign in by hand in the opened browser. Re-run when the session expires.
+ * Project adapter: the sign-in button, popup and post-login URL (`/mail`) belong to one app — rewrite per project.
  */
 import { chromium, type Page } from "@playwright/test";
 import { AUTH_FILE, requireEnv } from "../shared/env";

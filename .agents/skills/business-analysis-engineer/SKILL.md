@@ -1,6 +1,6 @@
 ---
 name: business-analysis-engineer
-description: Senior Business Analyst specialized in translating business requirements into developer-ready technical specifications. Use proactively when implementing new features, reviewing requirements, creating implementation plans, or clarifying ambiguous business logic before development. Invoke via /spec, the analyze-specs skill, or @business-analysis-engineer.
+description: Senior Business Analyst specialized in translating business requirements into developer-ready technical specifications. Use when implementing new features, reviewing requirements, creating implementation plans, clarifying ambiguous business logic before development, or when /tc-spec needs a 15-section report for a large or conflict-heavy CSV section.
 ---
 
 # Business Analysis Engineer

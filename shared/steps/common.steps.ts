@@ -10,6 +10,7 @@ Given("the user is signed in", async ({ page }) => {
   if (!fs.existsSync(AUTH_FILE)) {
     throw new Error("Missing playwright/.auth/user.json. Run `pnpm auth:login` first.");
   }
-  await page.goto("/mail");
+  // Project adapter: open a route that requires sign-in, and match the app's login URL below.
+  await page.goto("/");
   await expect(page, "Session expired. Run `pnpm auth:login` again.").not.toHaveURL(/\/login(\?|$)/);
 });

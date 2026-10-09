@@ -1,6 +1,8 @@
 # Templates — spec & tester verify
 
-Reference pair in this repo: `docs/specs/authentication/AUTH_ACCESS.md` + `docs/scenario/authentication/AUTH_ACCESS_TESTER_VERIFY.md`.
+Worked example: `docs/specs/sample/SAMPLE.md` + `docs/scenario/sample/SAMPLE_TESTER_VERIFY.md` (CSV `docs/testcases/sample_testcase.csv`).
+
+Nested `{domain}` (e.g. `mail/advanced-search`): add one `../` per extra path segment in the relative links.
 
 ## Spec
 
