@@ -1,0 +1,6 @@
+No,Title,Pre-condition,Steps,Expected results,Results,Test Date,Executed by,Note,caseId,Automation,Domain,Flow,Tag
+Sample,,,,,,,,,,,,,
+TC_1,Open home page,User is not signed in,1. Open BASE_URL /,Page responds without HTTP error,Untested,,,,homeOpens,Auto,sample,openPath,
+TC_2,Open home page with query,User is not signed in,1. Open BASE_URL /?e2e=1,Page responds without HTTP error,Untested,,,,homeOpensWithQuery,Auto,sample,openPath,
+TC_3,Sign in with a real account,Valid account,1. Run pnpm auth:login,Session is saved,Untested,,,,,Manual,sample,,
+TC_4,Example with blank Expected,,1. Any step,,Untested,,,,,Out,sample,,

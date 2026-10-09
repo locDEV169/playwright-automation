@@ -1,10 +1,6 @@
----
-description: E2E conventions for this repo (Excel CSV → docs → BDD+DDT Playwright). Single source for all tc-* skills.
-globs: features/**,shared/**,scripts/**,docs/**,playwright.config.ts
-alwaysApply: false
----
-
 # E2E conventions
+
+Conventions for this repo (Excel CSV → docs → BDD+DDT Playwright). Single source for all tc-* skills in `.agents/skills/`.
 
 Stack: Playwright + playwright-bdd + TypeScript. Generated `.features-gen/` is never edited by hand (`pnpm bddgen`).
 
@@ -28,7 +24,7 @@ Original columns stay as they are: `No, Title, Pre-condition, Steps, Expected re
 |--------|----------|--------|
 | `caseId` | when `Auto` | camelCase intent id(s), comma-separated if one TC maps to several |
 | `Automation` | yes once triaged | `Auto` / `Manual` / `Out` / `Open` / `Conflict` |
-| `Domain` | when `Auto` | path under `features/`, e.g. `authentication`, `mail/advanced-search` |
+| `Domain` | when `Auto` | path under `features/`, e.g. `sample`, `mail/advanced-search` |
 | `Flow` | optional | one value of the dataset `flow` union |
 | `Tag` | optional | `@skip-ci`, `@mode:serial`, … |
 
@@ -51,6 +47,8 @@ scripts/check-testcase-sync.ts   # pnpm check:sync (check-only)
 ```
 
 New shared helpers (seed, retry, …) go to `shared/` only when a second domain needs them.
+
+Worked example: `features/sample/` + `docs/{specs,scenario}/sample/` + `docs/testcases/sample_testcase.csv`. Project adapters (rewrite per project): `scripts/auth-login.ts`, the route in `shared/steps/common.steps.ts`.
 
 ## Dataset contract
 

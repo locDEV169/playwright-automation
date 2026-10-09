@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 # tc-spec — CSV section → docs
 
-Writes **docs only**. Code is `/tc-automate`. Conventions: `.cursor/rules/e2e-conventions.mdc` (read it first).
+Writes **docs only**. Code is `/tc-automate`. Conventions: `AGENTS.md` (read it first).
 
 ```text
 docs/testcases/*.csv  →  /tc-spec  →  docs/specs/{domain}/{FLOW}.md
@@ -50,7 +50,7 @@ Rows:
 ## Step 2 — Analysis
 
 - Section ≤ ~15 TCs and no conflicts → analyze in the main context.
-- Larger or conflict-heavy → spawn `@business-analysis-engineer` with the CSV path + section, existing docs/features paths, and: "15-section report, do not invent blank Expected, list conflicts".
+- Larger or conflict-heavy → apply the `business-analysis-engineer` skill (in a subagent if the tool supports one) with the CSV path + section, existing docs/features paths, and: "15-section report, do not invent blank Expected, list conflicts".
 
 Never turn an OPEN item into a rule.
 
